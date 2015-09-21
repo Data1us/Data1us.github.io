@@ -1,0 +1,241 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Unreal Timer</title>    
+    <link href="./styles/bootstrap.min.css" rel="stylesheet">    
+    <link href="./styles/sb-admin.css" rel="stylesheet">  		
+    <link href="./Content/bootstrap-theme.min.css" rel="stylesheet">		
+	<style type="text/css">	
+		.item-image {width:100px; height:100px;}
+		.reset-btn { padding:30px; font-size:30px; padding-right:150px; padding-left:150px;}
+		.progress {height:100px;}
+		.button-controls { padding:20px; font-size:30px; width:200px; margin:10px;}
+		.display-none { display:none;}
+		.checkbox-form { margin-bottom:10px;}
+		.thingy { color:#f0ad4e }
+	</style>
+  </head>
+
+  <body>	
+  
+    <div id="wrapper">
+	
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Unreal Timer <span class="thingy">ALPHA</span></a>
+        </div>
+
+		<div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul id="left-menu" class="nav navbar-nav side-nav">
+			<li><div class="btn btn-primary button-controls" id="start">Start</div></li>
+			<li><div class="btn btn-danger button-controls" id="stop">Stop</div></li>
+			<li><div class="btn btn-info button-controls" id="reset">Reset</div></li>
+          </ul>
+          
+      </nav>		
+        
+      </nav>
+
+	  
+		
+		<div id="page-wrapper">
+			<form class="form-inline checkbox-form">				
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="ShieldBelt" />Shield Belt</label></div>
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="Udamage" />UDamage</label></div>
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="Armour" />Armour</label></div>
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="ThighPads" />Thigh Pads</label></div>
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="Helmet" />Helmet</label></div>
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="HealthKeg" />HealthKeg</label></div>
+				
+				
+			</form>
+			<div id="stopwatches"></div>
+		</div>      
+
+<script id="reddit-item-template" type="text/x-handlebars-template">	
+<div class="well" id="{{id}}">
+	<div class="row">
+		<div class="col-md-1"><img class="item-image img-thumbnail" src="{{image}}" /></div>
+		<div class="col-md-2" id="myName"><h4>{{name}}</h4><h1 id="time"></h1></div>
+		<div class="col-md-6">
+			<div class="progress">
+			  <div id="progress-bar" class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="{{time}}" style="width: 0%;">
+				<span class="sr-only"></span>
+			  </div>
+			</div>		
+		</div>
+		<div class="col-md-3">
+			<!--<button class="btn btn-primary" id="start">Start</button>
+			<button class="btn btn-warning" id="stop">Stop</button>		-->
+			<button class="btn btn-info btn-lg reset-btn" id="reset">reset</button>
+		</div> 		
+	</div>			
+</div>
+</script>		
+		
+		
+    <!-- JavaScript -->
+    <script src="./scripts/jquery-1.11.0.min.js"></script>
+    <script src="./scripts/handlebars.min.js"></script>
+    <script src="./scripts/underscore-min.js"></script>
+    <script src="./scripts/bootstrap.min.js"></script>		
+	<script src = "./scripts/moment.js" type="text/javascript"></script>	
+	<script>
+
+
+
+	var AppStopwatch = (function (model) {		
+		
+		//constructor
+		var myTime = model.time,
+			counter = model.time, //time input
+			myId = _.uniqueId('timer_'),			
+			source   = $("#reddit-item-template").html(),
+			template = Handlebars.compile(source),
+			markup = $(template(_.extend(model, { id:myId })));	
+		
+		var stopwatch = {
+			el: markup,
+			container: markup.find('#time'),
+			startControl: markup.find('#start'),
+			stopControl: markup.find('#stop'),
+			resetControl: markup.find('#reset'),
+			progressControl : markup.find("#progress-bar")
+		};		
+		
+			
+		//local functions
+		var runClock;
+		var started = false;
+
+		function displayTime() {			
+			if (counter < 0) {counter = myTime;}
+			var current = myTime - counter;
+			var percentage = Math.round((current / myTime) * 100);
+			stopwatch.progressControl.attr("aria-valuenow", percentage);
+			stopwatch.progressControl.attr("style", "width:"+percentage + "%");			
+			
+			stopwatch.progressControl.removeClass("progress-bar-success");
+			stopwatch.progressControl.removeClass("progress-bar-warning");
+			stopwatch.progressControl.removeClass("progress-bar-danger");
+			if (percentage <= 100) stopwatch.progressControl.addClass("progress-bar-success");
+			if (percentage <= 90) stopwatch.progressControl.addClass("progress-bar-warning");
+			if (percentage <= 80) stopwatch.progressControl.addClass("progress-bar-danger");
+			
+			stopwatch.container.html(moment().hour(0).minute(0).second(counter--).format('HH : mm : ss'));						
+		}
+
+		function startWatch() {	
+			if (started) return;
+			started = true;
+			displayTime();
+			runClock = setInterval(displayTime, 1000);
+		}
+
+		function stopWatch() {						
+			clearInterval(runClock);
+			started = false;
+		}
+
+		function resetWatch(){
+			counter = myTime;
+			stopwatch.container.html(moment().hour(0).minute(0).second(counter).format('HH : mm : ss'));									
+			
+			stopwatch.progressControl.removeClass("progress-bar-success");
+			stopwatch.progressControl.removeClass("progress-bar-warning");
+			stopwatch.progressControl.removeClass("progress-bar-danger");
+			stopwatch.progressControl.attr("aria-valuenow", 0);
+			stopwatch.progressControl.attr("style", "width:"+0 + "%");	
+
+			
+			
+		}
+		
+		function toggleMe(){
+			stopwatch.el.toggleClass("display-none");
+		}
+		
+		//events
+		stopwatch.startControl.click(function(e){
+			startWatch();
+		});
+		stopwatch.stopControl.click(function(e){		
+			stopWatch();
+		});
+		stopwatch.resetControl.click(function(e){
+			resetWatch();
+		});		
+		
+		//attach the clock
+		$(model.location).append(markup);
+		
+		//returning object
+		return {
+			me:stopwatch,
+			start:startWatch,
+			stop:stopWatch,
+			reset:resetWatch,
+			toggle:toggleMe
+		};
+	});
+
+	var shieldBelt = new AppStopwatch({time:90, location:"#stopwatches", name:"Shield Belt", image:"./Content/Shieldbelt.jpg"});
+	var uDamage = new AppStopwatch({time:90, location:"#stopwatches", name:"UDamage", image:"./Content/udamage.jpg"});
+	var armour = new AppStopwatch({time:30, location:"#stopwatches", name:"Armour", image:"./Content/Armour.JPG"});	
+	var thighPads = new AppStopwatch({time:30, location:"#stopwatches", name:"Thigh Pads", image:"./Content/ThighPads.jpg"});
+	var helmet = new AppStopwatch({time:30, location:"#stopwatches", name:"Helmet", image:"./Content/Helmet.jpg"});	
+	var healthKeg = new AppStopwatch({time:90, location:"#stopwatches", name:"Health Keg", image:"./Content/HealthKeg.jpg"});
+	
+	
+	
+	var watches = [ shieldBelt, uDamage, armour, thighPads, helmet, healthKeg ];
+	$("#start").click(function(e){
+		$.each(watches, function(key,value){			
+			setTimeout(function(){
+				value.start();
+			});
+		});
+	});
+	$("#reset").click(function(e){
+		$.each(watches, function(key,value){			
+			setTimeout(function(){
+				value.reset();
+			});
+		});
+	});
+	$("#stop").click(function(e){
+		$.each(watches, function(key,value){			
+			setTimeout(function(){
+				value.stop();
+			});
+		});
+	});
+	
+	
+	$("#ShieldBelt").click(function(){ shieldBelt.toggle();})
+	$("#Udamage").click(function(){ uDamage.toggle();})
+	$("#Armour").click(function(){ armour.toggle();})
+	$("#ThighPads").click(function(){ thighPads.toggle();})
+	$("#Helmet").click(function(){ helmet.toggle();})
+	$("#HealthKeg").click(function(){ healthKeg.toggle();})
+	
+	
+	
+	</script>
+		
+  </body>
+</html>
