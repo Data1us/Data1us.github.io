@@ -60,6 +60,7 @@
 				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="ThighPads" />Thigh Pads</label></div>
 				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="Helmet" />Helmet</label></div>
 				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="HealthKeg" />HealthKeg</label></div>
+				<div class="checkbox checkbox-inline"><label><input type="checkbox" value="" checked="checked" id="Redeemer" />Redeemer</label></div>
 				
 				
 			</form>
@@ -199,10 +200,11 @@
 	var thighPads = new AppStopwatch({time:30, location:"#stopwatches", name:"Thigh Pads", image:"./Content/ThighPads.jpg"});
 	var helmet = new AppStopwatch({time:30, location:"#stopwatches", name:"Helmet", image:"./Content/Helmet.jpg"});	
 	var healthKeg = new AppStopwatch({time:90, location:"#stopwatches", name:"Health Keg", image:"./Content/HealthKeg.jpg"});
+	var redeemer = new AppStopwatch({time:120, location:"#stopwatches", name:"Redeemer", image:"./Content/redeemer.jpg"});
 	
 	
 	
-	var watches = [ shieldBelt, uDamage, armour, thighPads, helmet, healthKeg ];
+	var watches = [ shieldBelt, uDamage, armour, thighPads, helmet, healthKeg, redeemer ];
 	$("#start").click(function(e){
 		$.each(watches, function(key,value){			
 			setTimeout(function(){
@@ -226,12 +228,14 @@
 	});
 	
 	
-	$("#ShieldBelt").click(function(){ shieldBelt.toggle();})
-	$("#Udamage").click(function(){ uDamage.toggle();})
-	$("#Armour").click(function(){ armour.toggle();})
-	$("#ThighPads").click(function(){ thighPads.toggle();})
-	$("#Helmet").click(function(){ helmet.toggle();})
-	$("#HealthKeg").click(function(){ healthKeg.toggle();})
+	$("#ShieldBelt").click(function(){ shieldBelt.toggle();});
+	$("#Udamage").click(function(){ uDamage.toggle();});
+	$("#Armour").click(function(){ armour.toggle();});
+	$("#ThighPads").click(function(){ thighPads.toggle();});
+	$("#Helmet").click(function(){ helmet.toggle();});
+	$("#HealthKeg").click(function(){ healthKeg.toggle();});
+	$("#Redeemer").click(function(){ redeemer.toggle();});
+	
 	
 	
 	
