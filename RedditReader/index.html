@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>My Reddit Rss Reader</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="./styles/bootstrap.min.css" rel="stylesheet">
+    <link href="./styles/sb-admin.css" rel="stylesheet">  	
+	<link rel="stylesheet" href="./styles/blueimp-gallery.min.css">	
+	<style>
+		#SubreditSearch {margin-left:10px;}  
+		a.IsActive {
+			color: #fff !important;
+			background-color: #080808;
+		  }		
+		  #loaderrrr {color:white}
+		  #monies {color:white; margin-left:15px; margin-top:15px }
+		  
+		  .display-none{display:none !important;}
+		  .img-thumbnail { padding:10px; margin:10px}
+		  .img-thumbnail img { width:200px; height:200px;}
+		  .img-thumbnail .reddit-item-comments {text-align:center;}
+		  #display-mode {margin:15px;}
+	</style>
+  </head>
+
+  <body>	
+  
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Reddit RSS Reader</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul id="left-menu" class="nav navbar-nav side-nav">
+            <li><input id="SubreditSearch" class="form-control" type="text" placeholder="Subreddit Search" /></li>
+			<li id="monies"><span></span> Saved</li>
+			<li>
+				<div id="display-mode" class="btn-group">
+					<a class="btn btn-default active" rel="text" aria-label="Left Align">Text</a>
+					<a class="btn btn-default" rel="image" aria-label="Center Align">Image</a>					
+				</div>			
+			</li>
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right navbar-user" style="visibility: hidden">
+            <li class="dropdown messages-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Messages <span class="badge">7</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-header">7 New Messages</li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li class="message-preview">
+                  <a href="#">
+                    <span class="avatar"><img src="http://placehold.it/50x50"></span>
+                    <span class="name">John Smith:</span>
+                    <span class="message">Hey there, I wanted to ask you something...</span>
+                    <span class="time"><i class="fa fa-clock-o"></i> 4:34 PM</span>
+                  </a>
+                </li>
+                <li class="divider"></li>
+                <li><a href="#">View Inbox <span class="badge">7</span></a></li>
+              </ul>
+            </li>
+            <li class="dropdown alerts-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> Alerts <span class="badge">3</span> <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Default <span class="label label-default">Default</span></a></li>
+                <li><a href="#">Primary <span class="label label-primary">Primary</span></a></li>
+                <li><a href="#">Success <span class="label label-success">Success</span></a></li>
+                <li><a href="#">Info <span class="label label-info">Info</span></a></li>
+                <li><a href="#">Warning <span class="label label-warning">Warning</span></a></li>
+                <li><a href="#">Danger <span class="label label-danger">Danger</span></a></li>
+                <li class="divider"></li>
+                <li><a href="#">View All</a></li>
+              </ul>
+            </li>
+            <li class="dropdown user-dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#"><i class="fa fa-user"></i> Profile</a></li>
+                <li><a href="#"><i class="fa fa-envelope"></i> Inbox <span class="badge">7</span></a></li>
+                <li><a href="#"><i class="fa fa-gear"></i> Settings</a></li>
+                <li class="divider"></li>
+                <li><a href="#"><i class="fa fa-power-off"></i> Log Out</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </nav>
+
+      <div id="page-wrapper">
+
+		<!-- container for the image -->
+		<div id="image-section" class="display-none">
+			<div id="links"></div>
+			<a id="image-more" class="btn btn-primary" > more</a>
+		</div>
+		<div id="text-section" class="">
+			<div id="reader-content"></div>
+			<div id="loaderrrr">x</div>
+		</div>
+
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script id="left-menu-template" type="text/x-handlebars-template">  
+  <li><a id="{{Name}}" href="" rel="{{Location}}" class="left-menu-item"><i class="fa fa-dashboard"></i> <span>{{Name}}</span></a></li>
+</script>
+
+<script id="reddit-image-template" type="text/x-handlebars-template">
+    <div class="img-thumbnail">
+		<a href="{{link}}" title="{{title}}" rel="{{name}}" class="reddit-image-link" data-gallery>
+			<img src="{{thumbnail}}" alt="Banana">
+		</a>	
+		<div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
+	</div>
+	
+</script>
+
+<script id="reddit-item-template" type="text/x-handlebars-template">
+  <div class="reddit-item">
+        
+        <h3>{{title}}</h3>  
+			<input type="hidden" value="{{name}}" />
+        {{#if thumbnail}}      
+            <div class="redit-item-thumbnail"><img src="{{thumbnail}}" /></div>
+        {{/if}}
+        <div class="redit-item-content">{{content}}</div>
+        
+        <div class="redit-item-controls">
+            <div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
+            {{#if isLink}}
+            <div class="reddit-item-link"><a target="_blank" href="{{link}}">{{link}}</a></div>        
+            {{/if}}
+            <div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
+        </div>
+  </div>
+    <hr/>
+</script>
+          
+          <style> #loader { width: 500px;margin: auto;height: 200px;display: none;} </style>
+          <div id="loader">
+          <img src="./Content/loading.gif" class="img-circle"/>
+          </div>
+      </div><!-- /#page-wrapper -->
+
+    </div><!-- /#wrapper -->
+
+    <!-- JavaScript -->
+    <script src="./scripts/jquery-1.11.0.min.js"></script>
+    <script src="./scripts/handlebars.min.js"></script>
+    <script src="./scripts/underscore-min.js"></script>
+    <script src="./scripts/bootstrap.min.js"></script>
+	<script src="./scripts/jquery.blueimp-gallery.min.js"></script>
+	
+	<script>
+		(function ($) {
+
+			$.fn.isOnScreen = function(x, y){
+
+				if(x == null || typeof x == 'undefined') x = 1;
+				if(y == null || typeof y == 'undefined') y = 1;
+
+				var win = $(window);
+
+				var viewport = {
+					top : win.scrollTop(),
+					left : win.scrollLeft()
+				};
+				viewport.right = viewport.left + win.width();
+				viewport.bottom = viewport.top + win.height();
+
+				var height = this.outerHeight();
+				var width = this.outerWidth();
+
+				if(!width || !height){
+					return false;
+				}
+
+				var bounds = this.offset();
+				bounds.right = bounds.left + width;
+				bounds.bottom = bounds.top + height;
+
+				var visible = (!(viewport.right < bounds.left || viewport.left > bounds.right || viewport.bottom < bounds.top || viewport.top > bounds.bottom));
+
+				if(!visible){
+					return false;
+				}
+
+				var deltas = {
+					top : Math.min( 1, ( bounds.bottom - viewport.top ) / height),
+					bottom : Math.min(1, ( viewport.bottom - bounds.top ) / height),
+					left : Math.min(1, ( bounds.right - viewport.left ) / width),
+					right : Math.min(1, ( viewport.right - bounds.left ) / width)
+				};
+
+				return (deltas.left * deltas.right) >= x && (deltas.top * deltas.bottom) >= y;
+
+			};
+
+		})(jQuery);	
+	</script>
+	
+    
+    <script>
+		function daysBetween(one, another) {
+			return Math.floor(Math.abs((+one) - (+another))/8.64e7);
+		}
+		var todaysDate = new Date((new Date()).getFullYear(),(new Date()).getMonth()+1,(new Date()).getDate());
+		var diff = daysBetween (new Date(2015,06,29), todaysDate)-1;
+		var cokesPerDay = 5;
+		var costPerItem = 4;
+		var moniesSaved = diff * 5 * 4;
+		$("#monies span").html(moniesSaved);
+		var imageMode = function(){
+			return $("#display-mode a.active").prop("rel") === "image";
+		};
+		
+	
+        var leftMenu = $("#left-menu");
+        var leftMenuTemplate = (function() {
+            var markup = $("#left-menu-template").html();
+            return Handlebars.compile(markup);
+        })();
+        var content = $("#reader-content");
+		var links = $("#links");
+        var contentItemTemplate = (function () {
+            var markup = $("#reddit-item-template").html();
+            return Handlebars.compile(markup);
+        })();
+        var imageItemTemplate = (function () {
+            var markup = $("#reddit-image-template").html();
+            return Handlebars.compile(markup);
+        })();
+		
+		
+		var loading = true;
+        var readers = [
+            { Name: "Freediving", Location: "freediving" },
+            { Name: "Surfing", Location: "surfing" },
+            { Name: "Stand Up Paddle", Location: "sup" },
+            { Name: "Pics", Location: "pics" },
+            { Name: "Hockey", Location: "fieldhockey" },
+            { Name: "Freeboard", Location: "freebord" },
+            { Name: "Wakeboarding", Location: "wake" },
+            { Name: "Kiteboarding", Location: "Kiteboarding" },
+            { Name: "Longboarding", Location: "longboarding" },
+            { Name: "Snowboarding", Location: "snowboarding" },
+			{ Name: "Guy Is Fag", Location: "boating" }
+        ];
+
+        var menuMarkup =
+            _.each(readers, function(reader) {
+                leftMenu.append(leftMenuTemplate(reader));
+            });				
+
+		
+		var scrollToTop = function() {
+			//$("html, body").animate({ scrollTop: 0 }, "fast");	
+			window.scrollTo(0,0);
+		};
+		
+		var setHash = function(name) {
+			if (_.isUndefined(window.location.hash)) return;
+			window.location.hash = name;
+		}
+		
+		var getHash = function() {
+			if (_.isUndefined(window.location.hash)) return;
+			return window.location.hash;
+		}
+		
+		var isImage = function(input){
+			if (input.indexOf(".jpg") > 0) return true;
+			if (input.indexOf(".gif") > 0 && input.indexOf(".gifv") == -1) return true;
+			return false;
+		};
+		
+		var getThumbnail = function(input) {
+			if (input.indexOf("nsfw") > -1) return "/Content/nsfw.png";
+			return input;
+		}
+		
+		var renderItems = function(json){
+			loading=true;
+			var data = json.data;
+			if (!_.isUndefined(data) && !_.isUndefined(data.children)) {
+			
+				if (!imageMode()) {
+					_.each(data.children, function(item) {
+						var itemModel = {
+							title: item.data.title,
+							author: item.data.author,
+							content: item.data.selftext || item.data.selftext_html,
+							permalink: item.data.permalink,
+							name: item.data.name
+						};
+						if (!_.isUndefined(item.data.num_comments)) itemModel.commentCount = item.data.num_comments;
+						if (!_.isUndefined(item.data.thumbnail) && item.data.thumbnail != "" && item.data.thumbnail != "self" && item.data.thumbnail != "default") itemModel.thumbnail = item.data.thumbnail;
+						if (!_.isUndefined(item.data.url) && item.data.url != "" && item.data.url.indexOf("reddit.com") == -1) {
+							itemModel.isLink = true;
+							itemModel.link = item.data.url;
+						}
+						$("#loader").hide();
+						content.append(contentItemTemplate(itemModel));						
+						
+					});
+				}
+				else {
+					_.each(data.children, function(item) {
+						var itemModel = {
+							title: item.data.title,
+							author: item.data.author,
+							content: item.data.selftext || item.data.selftext_html,
+							permalink: item.data.permalink,
+							name: item.data.name
+						};						
+						if (!_.isUndefined(item.data.num_comments)) itemModel.commentCount = item.data.num_comments;
+						if (!_.isUndefined(item.data.thumbnail) && item.data.thumbnail != "" && item.data.thumbnail != "self" && item.data.thumbnail != "default") itemModel.thumbnail = getThumbnail(item.data.thumbnail);						
+						if (!_.isUndefined(item.data.url) && item.data.url != "" && isImage(item.data.url)) {
+							itemModel.isLink = true;
+							itemModel.link = item.data.url;
+						}
+						
+						if (!_.isUndefined(itemModel.thumbnail) && !_.isUndefined(itemModel.link)){						
+							links.append(imageItemTemplate(itemModel));							
+						}												
+						$("#loader").hide();
+					});				
+				}
+			}		
+			
+			//scrollToTop();
+		};		
+		
+		var activate = function(item) {			
+			deactivateAll();
+			item.addClass("IsActive");			
+		}
+		
+		var deactivateAll = function() {
+			$("a.IsActive").removeClass("IsActive");
+		};
+		
+        $(".left-menu-item").click(function(e) {
+            e.preventDefault();
+			loading = true;
+            content.html("");
+			links.html("");
+            $("#loader").show();
+            var item = $(this),
+                rel = item.attr("rel"),
+				name = item.find("span").html();
+			setHash(name);
+			
+			activate(item);
+			$("#SubreditSearch").val("");
+			
+            performSubreditSearch(rel);
+        });
+		
+		var performSubreditSearch = function(name, after, clearContent, scrollTop){
+			if (_.isUndefined(clearContent)) clearContent = true;			
+			if (clearContent) content.html("");
+			if (_.isUndefined(scrollTop)) scrollTop = true;			
+			
+            $("#loader").show();						
+			var lastItem = $(".reddit-item").last();
+			var limit=(imageMode()) ? 100 : 25;
+			var rel = "http://www.reddit.com/r/" + name + "/new/.json?limit=" + limit;					
+			setHash(name);
+			
+			if (!_.isUndefined(after)) rel = rel + "&after=" + after;
+			
+            $.getJSON(rel + "&jsonp=?", function (json) {
+                renderItems(json);				
+				if (!clearContent) {
+					//$("html, body").animate({scrollTop: lastItem.offset().top - 100});
+					//$("html, body").height()
+				}
+				loading = false;
+				
+				if (scrollTop) scrollToTop();
+            });				
+		};
+		
+		$("#SubreditSearch").keyup(function(e){
+			var keycode = (e.keyCode ? e.keyCode : e.which);
+			if(keycode != '13') return;
+			var name = $(this).val();
+			deactivateAll();
+			
+			if (imageMode()){			
+				links.html("");
+				performSubreditSearch(name);				
+			}
+			else {
+				setHash(name);
+				content.html("");	
+			}
+		});
+		
+		$("#image-more").click(function(e){
+			e.preventDefault();
+			var hash = getHash().replace("#","");
+			var lastItem = $("#links a.reddit-image-link").last().prop("rel");
+			performSubreditSearch(hash, lastItem, false, false);			
+		});	
+		
+		
+		$("#display-mode a").click(function(e){
+			e.preventDefault();
+			$("#display-mode a.active").removeClass("active");
+			$(this).addClass("active");
+			var hash = getHash().replace("#","");
+			if (imageMode()){	
+				$("#image-section").removeClass("display-none");
+				$("#text-section").addClass("display-none");						
+				links.html("");
+				performSubreditSearch(hash);				
+			}
+			else {								
+				content.html("");	
+				$("#image-section").addClass("display-none");
+				$("#text-section").removeClass("display-none");										
+			}			
+		});
+		
+		
+		var doLoad = $("#loaderrrr");
+		setInterval(function(e){
+			if (doLoad.isOnScreen() && !loading) {
+				loading=true;				
+				var hash = getHash().replace("#","");
+				var lastItem = $(".reddit-item").last().find("input").val();
+				performSubreditSearch(hash, lastItem, false, false);
+			}
+		},50);
+		
+		//render the current reddit.
+		var hash = getHash();
+		if (!_.isUndefined(hash)){
+			var item = $(hash);
+			if (item.length > 0) item.click();
+			else {
+				performSubreditSearch(hash.replace("#", ""), undefined, undefined);
+				$("#SubreditSearch").val(hash.replace("#", ""));				
+			}
+		}	
+		
+		
+
+    </script>        
+    
+
+      
+
+  </body>
+</html>
