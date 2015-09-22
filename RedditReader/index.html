@@ -50,8 +50,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <ul id="left-menu" class="nav navbar-nav side-nav">
-            <li><input id="SubreditSearch" class="form-control" type="text" placeholder="Subreddit Search" /></li>
-			<li id="monies"><span></span> Saved</li>
+            <li><input id="SubreditSearch" class="form-control" type="text" placeholder="Subreddit Search" /></li>			
 			<li>
 				<div id="display-mode" class="btn-group">
 					<a class="btn btn-default active" rel="text" aria-label="Left Align">Text</a>
@@ -269,19 +268,7 @@
 	
     
     <script>
-		function daysBetween(one, another) {
-			return Math.floor(Math.abs((+one) - (+another))/8.64e7);
-		}
-		var todaysDate = new Date((new Date()).getFullYear(),(new Date()).getMonth()+1,(new Date()).getDate());
-		var diff = daysBetween (new Date(2015,06,29), todaysDate)-1;
-		var cokesPerDay = 5;
-		var costPerItem = 4;
-		var moniesSaved = diff * 5 * 4;
-		$("#monies span").html(moniesSaved);
-		var imageMode = function(){
-			return $("#display-mode a.active").prop("rel") === "image";
-		};
-		
+			
 	
         var leftMenu = $("#left-menu");
         var leftMenuTemplate = (function() {
