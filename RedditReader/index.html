@@ -432,10 +432,13 @@
 				return obj.Location.toLowerCase() === name.toLowerCase();
 			});
 			
-			if (matching.length == 0) return;
+			var itemType = "new";
+			if (matching.length > 0) {
+				var reader = matching[0];
+				itemType = typeof(reader.type) != "undefined" ? reader.type : "new"
+			}
 			
-			var reader = matching[0];
-			var itemType = typeof(reader.type) != "undefined" ? reader.type : "new"
+			
 			
 			
             $("#loader").show();						
