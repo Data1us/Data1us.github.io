@@ -26,7 +26,7 @@
 		  
 		  .display-none{display:none !important;}
 		  .img-thumbnail { padding:10px; margin:10px; position:relative;}
-		  #image-section .img-thumbnail img { width:200px; height:200px;}
+		  #image-section .img-thumbnail img { width:180px; height:180px;}
 		  #text-section .img-thumbnail img { width:150px; height:150px;}
 		  .img-thumbnail .reddit-item-comments {
 			position:absolute; 
@@ -409,6 +409,7 @@
 		};
 		
         $(".left-menu-item").click(function(e) {
+			$(".navbar-header button").click();
             e.preventDefault();
 			loading = true;
             content.html("");
@@ -465,6 +466,7 @@
 		
 		
 		var initSearch = function() {			
+			$(".navbar-header button").click();
 			var name = $("#SubreditSearch").val();
 			deactivateAll();
 			
@@ -499,6 +501,7 @@
 		
 		$("#display-mode a").click(function(e){
 			e.preventDefault();
+			$(".navbar-header button").click();
 			$("#display-mode a.active").removeClass("active");
 			$(this).addClass("active");
 			var hash = getHash().replace("#","");
