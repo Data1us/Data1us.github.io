@@ -26,7 +26,7 @@
 		  
 		  .display-none{display:none !important;}
 		  .img-thumbnail { padding:10px; margin:10px; position:relative;}
-		  #image-section .img-thumbnail img { width:250px; height:250px;}
+		  #image-section .img-thumbnail img { width:200px; height:200px;}
 		  #text-section .img-thumbnail img { width:150px; height:150px;}
 		  .img-thumbnail .reddit-item-comments {
 			position:absolute; 
@@ -207,7 +207,7 @@
 					<div class="redit-item-controls">
 						<div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
 						{{#if isLink}}
-						<div class="reddit-item-link"><a target="_blank" href="{{link}}">{{link}}</a></div>        
+						<div class="reddit-item-link"><a target="_blank" href="{{link}}">{{linkShort}}</a></div>        
 						{{/if}}
 						<div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
 					</div>				
@@ -364,6 +364,7 @@
 						if (!_.isUndefined(item.data.url) && item.data.url != "" && item.data.url.indexOf("reddit.com") == -1) {
 							itemModel.isLink = true;
 							itemModel.link = item.data.url;
+							itemModel.linkShort = (item.data.url.length > 50) ? item.data.url.substring(0, 50) + "...." : item.data.url;
 						}
 						$("#loader").hide();
 						content.append(contentItemTemplate(itemModel));						
@@ -384,6 +385,7 @@
 						if (!_.isUndefined(item.data.url) && item.data.url != "" && isImage(item.data.url)) {
 							itemModel.isLink = true;
 							itemModel.link = item.data.url;
+							itemModel.linkShort = (item.data.url.length > 50) ? item.data.url.substring(0, 50) + "...." : item.data.url;
 						}
 						
 						if (!_.isUndefined(itemModel.thumbnail) && !_.isUndefined(itemModel.link)){						
