@@ -17,9 +17,6 @@
     <!-- Custom CSS -->
     <link href="css/sb-admin.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="css/plugins/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -40,16 +37,16 @@
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
-                </button>-->
-                <a class="navbar-brand" href="index.html">UT <span class="gold">Au & Nz</span></a>
+                </button>
+                <a class="navbar-brand" href="index.html">SB Admin</a>
             </div>
             <!-- Top Menu Items -->
-            <!--<ul class="nav top-nav">
+            <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
@@ -60,7 +57,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -75,7 +73,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -90,7 +89,8 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -149,79 +149,71 @@
                     </ul>
                 </li>
             </ul>
-            -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li>
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
         </nav>
 
         <div id="page-wrapper">
 
             <div class="container-fluid">
-				
-				<div id="main-content">
-				
-					<div class="jumbotron main-jumbo text-outline">
-					  <div class="container">
-							<div class="col-md-8">
-								<h2>Welcome to the Australia and New Zealand Unreal Tournament Community</h2>
-								<h1 class="gold text-center">UTAUNZ</h1>
-								<p>My hearts beating, my hearts beating, my hands are shaking! my hands are shaking! But im still shooting and im still getting head shots!! BOOM HEADSHOT!!! BOOOM HEADSHOT!!</p>								
-							</div>
-							<div class="col-md-2 pull-right">
-								<a class="btn btn-primary quick-link" href="https://www.facebook.com/groups/utaunz/?fref=nf" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
-								<a class="btn btn-default quick-link" href="https://forums.unrealtournament.com/" target="_blank"><i class="fa fa-list"></i> Forums</a>
-								<a class="btn btn-warning quick-link" href="http://webchat.globalgamers.net/?channels=UTaunz" target="_blank"><i class="fa fa-wechat"></i> Chat</a>								
-							</div>
-					  </div>
-					</div>				
-				
-					<div class="jumbotron  page-section player-spotlight">
-					  <div class="container ">
-							
-							<h3>News</h3>
-							<hr>
-							
-							
-							<div class="row">							
-								<div class="col-md-12"><p>New to unreal? struggle to time armour? <a href="/UnrealTimer/" target="_blank">Click Here</a></p></div>							
-								<div class="col-md-12"><p>It is confirmed!!! Rocket launcher will be made hitscan!!! Yay....</p></div>
-								<div class="col-md-12"><p>2k to have speed reduction while carrying flag!!</p></div>
-								<div class="col-md-12"><p>redfoxx to be nerfed!!</p></div>
-								<div class="col-md-12"><p>bacon love websites that POP, confirmed!!</p></div>
-								<div class="col-md-12"><p>become pro in just 1 day with this one trick <b>CLICK HERE </b></p></div>								
-							</div>							
-							
-					  </div>
-					</div>		
 
-					<div class="jumbotron  page-section player-spotlight">
-					  <div class="container page-section ">
-							<h3>Player Spotlight</h3>
-							<hr>
-							
-							<div class="row">
-								<div class="col-md-4">
-									<img class="img-circle" src="/img/redfoxx.JPG" style="width:100px; height:100px;" />
-									<p>redfoxx  <i>op plz nerf</i></h4>
-									
-								</div>								
-								<div class="col-md-8">
-								
-								<iframe width="560" height="315" src="https://www.youtube.com/embed/5PvmaeCbjIk" frameborder="0" allowfullscreen></iframe>
-								
-								</div>
-							</div>
-							
-							
-					  </div>
-					</div>							
-				
-				<div>
-				
-				<div id="dynamic-content"></div>
-				
-				<div class="row" >
-					<div class="col-md-12" id="utaunz-chat"></div>
-				</div>
-               
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Blank Page
+                            <small>Subheading</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-file"></i> Blank Page
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.row -->
 
             </div>
             <!-- /.container-fluid -->
@@ -237,11 +229,6 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="js/plugins/morris/raphael.min.js"></script>
-    <script src="js/plugins/morris/morris.min.js"></script>
-    <script src="js/plugins/morris/morris-data.js"></script>
 
 </body>
 
