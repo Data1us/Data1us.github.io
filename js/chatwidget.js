@@ -13,7 +13,8 @@
 		}
 		
 		var render = function(){
-			if (target.find("iframe").length !== 0) return;
+			var forceRender = typeof(options.forceRender) != "undefined" ? options.forceRender : false;
+			if (!forceRender && target.find("iframe").length !== 0) return;
 			target.html(template({url:options.url}));		
 		}
 		

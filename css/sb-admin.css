@@ -18,14 +18,18 @@
 .jumbotron.main-jumbo   h4 { color:white; 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;}
 .jumbotron .main-jumbo .h1, .jumbotron h1.gold { color: gold; }
 .gold {color:gold;}
+.top-nav>li>a.gold { color:gold;}
 .player-spotlight { background-color: white;}
 .page-section { position: relative;}
 .header-section { position:absolute; top:-70px; width:200px; margin:auto; text-shadow:0px;}
 
 .chat-iframe { width:100%; height:850px; border:0px;}
 
-a.quick-link { width:150px; padding:20px; margin:10px;}
+.blog-iframe { width:100%; height:10000px; border:0px;}
+
+a.quick-link { width:150px; padding:5px; margin:5px;}
 div.main-jumbo p { font-size:14px;}
+
 body {
     margin-top: 100px;
     

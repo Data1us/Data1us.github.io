@@ -57,15 +57,19 @@
                 <li class="dropdown">
                     <a href="#Home" class="dropdown-toggle" data-toggle="tab" id="homeTab"><i class="fa fa-home"></i> Home</a>                
                 </li>
-                <li class="dropdown">
+				<li class="dropdown">
+                    <a href="#Reddit" class="dropdown-toggle" data-toggle="tab" id="redditTab"><i class="fa fa-reddit-alien"></i> Reddit</a>                
+                </li>
+				<li class="dropdown ">
+                    <a href="#UnrealTimer" class="dropdown-toggle" data-toggle="dropdown" id="timerTab"><i class="fa fa-clock-o"></i> Unreal Timer</a>
+                </li>											
+                <li class="dropdown pull-right">
                     <a href="#GlobalChat" class="dropdown-toggle" data-toggle="dropdown" id="globalChatTab"><i class="fa fa-wechat"></i> Global Chat</a>
                 </li>				
-                <li class="dropdown">
+                <li class="dropdown pull-right">
                     <a href="#AusChat" class="dropdown-toggle" data-toggle="dropdown" id="chatTab"><i class="fa fa-wechat"></i> Aus Chat</a>
-                </li>				
-                <li class="dropdown">
-                    <a href="#UnrealTimer" class="dropdown-toggle" data-toggle="dropdown" id="timerTab"><i class="fa fa-wechat"></i> Unreal Timer</a>
-                </li>					
+                </li>				            
+				<li class="pull-right"><a href="#" class="dropdown-toggle gold" data-toggle="dropdown">CHAT</a></li>				
             </ul>
             
         </nav>
@@ -80,58 +84,27 @@
 						<div class="jumbotron main-jumbo text-outline">
 						  <div class="container">
 								<div class="col-md-8">
-									<h2>Welcome Datalus's unreal book marker thingy</h2>
-									<h1 class="gold text-center">Ohdoyle rules.</h1>
-									<p>My hearts beating, my hearts beating, my hands are shaking! my hands are shaking! But im still shooting and im still getting head shots!! BOOM HEADSHOT!!! BOOOM HEADSHOT!!</p>								
+									<h2>Welcome Datalus's...</h2>
+									<h1 class="gold text-center">Unreal Aggregatorrrrr</h1>
+									<p>My hearts beating, my hearts beating, my hands are shaking! my hands are shaking! But im still shooting and im still missing everybody :(</p>								
+									<p>Everybody op, nerf plz.  Buff Datalus , give hitscan rocket launcher.</p>								
 								</div>
 								<div class="col-md-2 pull-right">
+									<h4 class="text-center">Aus and Nz Community Links</h4>
 									<a class="btn btn-primary quick-link" href="https://www.facebook.com/groups/utaunz/?fref=nf" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
-									<a class="btn btn-default quick-link" href="https://forums.unrealtournament.com/" target="_blank"><i class="fa fa-list"></i> Forums</a>
-									<a class="btn btn-warning quick-link" href="#" id="chatTabTrigger"><i class="fa fa-wechat"></i> Aus Chat</a>								
+									<a class="btn btn-default quick-link" href="http://www.unrealau.net/viewforum.php?f=2&sid=a77feb5ff13fd1ee71a7a233c7b24236" target="_blank"><i class="fa fa-list"></i> Forums</a>
+									<a class="btn btn-warning quick-link" href="http://webchat.globalgamers.net/?channels=UTaunz" id="-disable-chatTabTrigger" target="_blank"><i class="fa fa-wechat"></i> Aus Chat</a>								
+									<a class="btn btn-info quick-link" href="http://www.utaunz.com/index.html" target="_blank"><i class="fa fa-group"></i> Community</a>								
+									<a class="btn btn-success quick-link" href="http://www.skankyflat.net/" target="_blank"><i class="fa fa-fire"></i> Skanky Hub</a>								
+									
+									
 								</div>
 						  </div>
 						</div>	
 						
-						<div class="jumbotron  page-section player-spotlight">
-						  <div class="container ">
-								
-								<h3>News</h3>
-								<hr>
-								
-								
-								<div class="row">							
-									<div class="col-md-12"><p>New to unreal? struggle to time armour? <a href="#" id="pageTimerLink" target="_blank">Click Here</a></p></div>							
-									<div class="col-md-12"><p>It is confirmed!!! Rocket launcher will be made hitscan!!! Yay....</p></div>
-									<div class="col-md-12"><p>2k to have speed reduction while carrying flag!!</p></div>
-									<div class="col-md-12"><p>redfoxx to be nerfed!!</p></div>
-									<div class="col-md-12"><p>bacon love websites that POP, confirmed!!</p></div>
-									<div class="col-md-12"><p>become pro in just 1 day with this one trick <b>CLICK HERE </b></p></div>								
-								</div>							
-								
-						  </div>
-						</div>		
-
-						<div class="jumbotron  page-section player-spotlight">
-						  <div class="container page-section ">
-								<h3>Player Spotlight</h3>
-								<hr>
-								
-								<div class="row">
-									<div class="col-md-4">
-										<img class="img-circle" src="/img/redfoxx.JPG" style="width:100px; height:100px;" />
-										<p>redfoxx  <i>op plz nerf</i></h4>
-										
-									</div>								
-									<div class="col-md-8">
-									
-									<iframe width="560" height="315" src="https://www.youtube.com/embed/5PvmaeCbjIk" frameborder="0" allowfullscreen></iframe>
-									
-									</div>
-								</div>
-								
-								
-						  </div>
-						</div>							
+						<!--<iframe id="blog-iframe" src="//www.unrealtournament.com/blog" class="blog-iframe"></iframe>-->
+						
+						<p>HOME CONTENT CURRENTLY DISABLED.</p>
 					
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="AusChat" aria-labelledby="profile-tab">
@@ -144,6 +117,9 @@
 						<p>Loading....</p>
 					</div>
 					
+					<div role="tabpanel" class="tab-pane fade" id="Reddit" aria-labelledby="profile-tab">
+						<p>Loading....</p>
+					</div>					
 				</div>
 				
 
@@ -173,7 +149,7 @@
 	var ausChatWidget = new page.chatwidget({ target:"#AusChat", url:"//webchat.globalgamers.net/?channels=UTaunz"});
 	var globalChatWidget = new page.chatwidget({ target:"#GlobalChat", url:"//webchat.globalgamers.net/?channels=unrealtournament"});
 	var unrealTimer = new page.chatwidget({ target:"#UnrealTimer", url:"/UnrealTimer/"});
-	
+	var reddit = new page.chatwidget({ target:"#Reddit", url:"/RedditReader/#unrealtournament", forceRender:true});
 	
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault()
@@ -183,6 +159,21 @@
 	$("#chatTab").click(function(){	ausChatWidget.render();	});	
 	$("#globalChatTab").click(function(){ globalChatWidget.render(); });	
 	$("#timerTab").click(function(){ unrealTimer.render(); });
+	$("#redditTab").click(function(){ 
+		reddit.render(); 
+				
+				//hacking some custom css in coz yeaaaaaa boi
+		setTimeout(function() {
+		
+			var cssLink = document.createElement("link") 
+			cssLink.href = "/css/reddit-reader-styles.css"; 
+			cssLink.rel = "stylesheet"; 
+			cssLink.type = "text/css"; 
+			$("#Reddit iframe").contents().find("body").append(cssLink);
+		
+		},200);
+	
+	});
 	
 	$("#chatTabTrigger").click(function(e){
 		e.preventDefault();
