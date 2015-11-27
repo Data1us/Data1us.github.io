@@ -60,6 +60,9 @@
 				<li class="dropdown">
                     <a href="#Reddit" class="dropdown-toggle" data-toggle="tab" id="redditTab"><i class="fa fa-reddit"></i> Reddit</a>                
                 </li>
+				<li class="dropdown">
+                    <a href="#FragCenter" class="dropdown-toggle" data-toggle="tab" id="fragCenterTab"><i class="fa fa-youtube"></i> Frag Center</a>                
+                </li>				
 				<li class="dropdown ">
                     <a href="#UnrealTimer" class="dropdown-toggle" data-toggle="dropdown" id="timerTab"><i class="fa fa-clock-o"></i> Unreal Timer</a>
                 </li>											
@@ -80,7 +83,6 @@
 				
 				<div id="myTabContent" class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="Home" aria-labelledby="home-tab">
-
 						<div class="jumbotron main-jumbo text-outline">
 						  <div class="container">
 								<div class="col-md-8">
@@ -95,18 +97,66 @@
 									<a class="btn btn-default quick-link" href="http://www.unrealau.net/viewforum.php?f=2&sid=a77feb5ff13fd1ee71a7a233c7b24236" target="_blank"><i class="fa fa-list"></i> Forums</a>
 									<a class="btn btn-warning quick-link" href="http://webchat.globalgamers.net/?channels=UTaunz" id="-disable-chatTabTrigger" target="_blank"><i class="fa fa-wechat"></i> Aus Chat</a>								
 									<a class="btn btn-info quick-link" href="http://www.utaunz.com/index.html" target="_blank"><i class="fa fa-group"></i> Community</a>								
-									<a class="btn btn-success quick-link" href="http://www.skankyflat.net/" target="_blank"><i class="fa fa-fire"></i> Skanky Hub</a>								
-									
+									<a class="btn btn-success quick-link" href="http://www.skankyflat.net/" target="_blank"><i class="fa fa-fire"></i> Skanky Hub</a>																	
 									
 								</div>
 						  </div>
+						<!-- Nav tabs 
+						  <ul class="nav nav-tabs" role="tablist" id="sub-tabs">
+							<li role="presentation" class="active"><a href="#official-news" aria-controls="home" role="tab" data-toggle="tab">Official News</a></li>
+							<li role="presentation"><a href="#local-news" aria-controls="profile" role="tab" data-toggle="tab">Aus & Nz News</a></li>							
+						  </ul>			-->			  
+							<div class="sub-menu-section">
+								<div class="gold pull-left sub-menu-heading">NEWS</div>
+								<ul class="nav top-nav pull-left" id="sub-tabs">                
+									<li class="dropdown">
+										<a href="#official-news" class="dropdown-toggle" data-toggle="tab" id="sub-offocial-news"><i class="fa fa-newspaper-o"></i> Official Blog</a>                
+									</li>
+									<li class="dropdown">
+										<a href="#official-forum-iframe" class="dropdown-toggle" data-toggle="tab" id="sub-official-forums"><i class="fa fa-newspaper-o"></i> Official Forums</a>                
+									</li>									
+									<li class="dropdown">
+										<a href="#local-news" class="dropdown-toggle" data-toggle="tab" id="sub-local-news"><i class="fa fa-group"></i> Aus & Nz News</a>                
+									</li>				
+								</ul>						  
+							</div>
+						  
 						</div>	
 						
-						<iframe id="blog-iframe" src="//www.unrealtournament.com/blog" class="blog-iframe"></iframe>
+
+
+						  <!-- Tab panes -->
+						  <div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="official-news">
+								<iframe id="blog-iframe" src="//www.unrealtournament.com/blog" class="blog-iframe"></iframe>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="official-forum-iframe">Loading....</div>							
+							<div role="tabpanel" class="tab-pane" id="local-news" style="padding:50px; font-size:20px;">
+							<p>Comming soon, going to have a look around try to find out what to use for this.</p>
+							<p>Happy for suggestions, reddit / blog / fb group / hybrid page?</p>							
+							<hr>
+							<p>YOU HAVE STUMBLED ACROSS A CLIPPY IN THE WILD.....</p>
+							<p><i class="fa fa-paperclip clippy text-center"></i></p>
+							</div>							
+						  </div>
+					
+					
+					
+					
+					
+					
+						<!---->
+					
+						
+						
+									
+						
+						
 						
 						
 					
 					</div>
+					
 					<div role="tabpanel" class="tab-pane fade" id="AusChat" aria-labelledby="profile-tab">
 						<p>Loading....</p>
 					</div>
@@ -119,7 +169,10 @@
 					
 					<div role="tabpanel" class="tab-pane fade" id="Reddit" aria-labelledby="profile-tab">
 						<p>Loading....</p>
-					</div>					
+					</div>	
+					<div role="tabpanel" class="tab-pane fade" id="FragCenter" aria-labelledby="profile-tab">
+						<p>Loading....</p>
+					</div>						
 				</div>
 				
 
@@ -150,6 +203,9 @@
 	var globalChatWidget = new page.chatwidget({ target:"#GlobalChat", url:"//webchat.globalgamers.net/?channels=unrealtournament"});
 	var unrealTimer = new page.chatwidget({ target:"#UnrealTimer", url:"/UnrealTimer/"});
 	var reddit = new page.chatwidget({ target:"#Reddit", url:"/RedditReader/#unrealtournament", forceRender:true});
+	var officialForums = new page.chatwidget({ target:"#official-forum-iframe", url:"//forums.unrealtournament.com/search.php?searchid=1477411", forceRender:true});
+	var fragCenter = new page.chatwidget({ target:"#FragCenter", url:"//www.unrealtournament.com/fragcenter", forceRender:true});
+	
 	
 	$('#myTabs a').click(function (e) {
 	  e.preventDefault()
@@ -159,6 +215,10 @@
 	$("#chatTab").click(function(){	ausChatWidget.render();	});	
 	$("#globalChatTab").click(function(){ globalChatWidget.render(); });	
 	$("#timerTab").click(function(){ unrealTimer.render(); });
+	$("#fragCenterTab").click(function(){ fragCenter.render(); });
+	$("#sub-official-forums").click(function(){ officialForums.render(); });
+	
+	
 	$("#redditTab").click(function(){ 
 		reddit.render(); 
 				
