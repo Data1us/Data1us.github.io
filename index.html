@@ -246,7 +246,12 @@
 	
 	
 	
-	
+	var hash = window.location.hash;
+	if (hash != "") {
+		setTimeout(function(e){
+			$(hash).click();
+		},100);		
+	}
 	
 	
 	</script>
