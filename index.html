@@ -60,6 +60,13 @@
 				<li class="dropdown">
                     <a href="#Reddit" class="dropdown-toggle" data-toggle="tab" id="redditTab"><i class="fa fa-reddit"></i> Reddit</a>                
                 </li>
+				
+				<li class="dropdown">
+                    <a href="#OfficialTwitter" class="dropdown-toggle" data-toggle="tab" id="officialTwitterTab"><i class="fa fa-twitter"></i> Official Twitter</a>                
+                </li>				
+				
+				
+				
 				<li class="dropdown">
                     <a href="#FragCenter" class="dropdown-toggle" data-toggle="tab" id="fragCenterTab"><i class="fa fa-youtube"></i> Frag Center</a>                
                 </li>				
@@ -171,7 +178,14 @@
 					</div>	
 					<div role="tabpanel" class="tab-pane fade" id="FragCenter" aria-labelledby="profile-tab">
 						<p>Loading....</p>
-					</div>						
+					</div>			
+					
+					<div role="tabpanel" class="tab-pane fade" id="OfficialTwitter" aria-labelledby="profile-tab">
+						            <a class="twitter-timeline"  href="https://twitter.com/utgame" data-widget-id="670467344376950784">Tweets by @utgame</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
+					</div>			
+
 				</div>
 				
 
@@ -204,6 +218,8 @@
 	var reddit = new page.chatwidget({ target:"#Reddit", url:"/RedditReader/#unrealtournament", forceRender:true});
 	//var officialForums = new page.chatwidget({ target:"#official-forum-iframe", url:"//forums.unrealtournament.com/search.php?searchid=1477411", forceRender:true});
 	var fragCenter = new page.chatwidget({ target:"#FragCenter", url:"//www.unrealtournament.com/fragcenter", forceRender:true});
+	var officialTwitter = new page.chatwidget({ target:"#OfficialTwitter", url:"//twitter.com/utgame", forceRender:true});
+	
 	
 	
 	$('#myTabs a').click(function (e) {
@@ -216,7 +232,7 @@
 	$("#timerTab").click(function(){ unrealTimer.render(); });
 	$("#fragCenterTab").click(function(){ fragCenter.render(); });
 	//$("#sub-official-forums").click(function(){ officialForums.render(); });
-	
+	//$("#officialTwitterTab").click(function(){ officialTwitter.render(); });
 	
 	$("#redditTab").click(function(){ 
 		reddit.render(); 
@@ -234,6 +250,23 @@
 	
 	});
 	
+	
+	$("#officialTwitterTab").click(function(){ 
+		
+				
+		//hacking some custom css in coz yeaaaaaa boi
+		setTimeout(function() {
+		
+			var cssLink = document.createElement("link") 
+			cssLink.href = "/css/official-twitter.css"; 
+			cssLink.rel = "stylesheet"; 
+			cssLink.type = "text/css"; 
+			$("#OfficialTwitter iframe").contents().find("body").append(cssLink);
+		
+		},600);
+	
+	});	
+	
 	$("#chatTabTrigger").click(function(e){
 		e.preventDefault();
 		$("#chatTab").click();
@@ -245,12 +278,16 @@
 	});	
 	
 	
+	$("#myTabs a").click(function(e){
+		window.location.hash = $(this).attr("id");
+	});
+	
 	
 	var hash = window.location.hash;
 	if (hash != "") {
 		setTimeout(function(e){
 			$(hash).click();
-		},100);		
+		},400);		
 	}
 	
 	
