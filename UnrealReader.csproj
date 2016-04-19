@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0A9ABDF-38DB-4C77-B106-AB698E549C54}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>UnrealReader</RootNamespace>
+    <AssemblyName>UnrealReader</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="font-awesome\fonts\fontawesome-webfont.eot" />
+    <None Include="font-awesome\fonts\fontawesome-webfont.ttf" />
+    <None Include="font-awesome\fonts\fontawesome-webfont.woff" />
+    <None Include="font-awesome\fonts\FontAwesome.otf" />
+    <None Include="font-awesome\less\bordered-pulled.less" />
+    <None Include="font-awesome\less\core.less" />
+    <None Include="font-awesome\less\fixed-width.less" />
+    <None Include="font-awesome\less\font-awesome.less" />
+    <None Include="font-awesome\less\icons.less" />
+    <None Include="font-awesome\less\larger.less" />
+    <None Include="font-awesome\less\list.less" />
+    <None Include="font-awesome\less\mixins.less" />
+    <None Include="font-awesome\less\path.less" />
+    <None Include="font-awesome\less\rotated-flipped.less" />
+    <None Include="font-awesome\less\spinning.less" />
+    <None Include="font-awesome\less\stacked.less" />
+    <None Include="font-awesome\less\variables.less" />
+    <None Include="font-awesome\scss\font-awesome.scss" />
+    <None Include="font-awesome\scss\_bordered-pulled.scss" />
+    <None Include="font-awesome\scss\_core.scss" />
+    <None Include="font-awesome\scss\_fixed-width.scss" />
+    <None Include="font-awesome\scss\_icons.scss" />
+    <None Include="font-awesome\scss\_larger.scss" />
+    <None Include="font-awesome\scss\_list.scss" />
+    <None Include="font-awesome\scss\_mixins.scss" />
+    <None Include="font-awesome\scss\_path.scss" />
+    <None Include="font-awesome\scss\_rotated-flipped.scss" />
+    <None Include="font-awesome\scss\_spinning.scss" />
+    <None Include="font-awesome\scss\_stacked.scss" />
+    <None Include="font-awesome\scss\_variables.scss" />
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
+    <None Include="fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="css\bootstrap-rtl.css" />
+    <Content Include="css\bootstrap-rtl.min.css" />
+    <Content Include="css\bootstrap.css" />
+    <Content Include="css\bootstrap.min.css" />
+    <Content Include="css\official-twitter.css" />
+    <Content Include="css\plugins\morris.css" />
+    <Content Include="css\reddit-reader-styles.css" />
+    <Content Include="css\sb-admin-rtl.css" />
+    <Content Include="css\sb-admin.css" />
+    <Content Include="font-awesome\css\font-awesome.css" />
+    <Content Include="font-awesome\css\font-awesome.min.css" />
+    <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="img\hex-loader2.gif" />
+    <Content Include="img\jumbo-back.JPG" />
+    <Content Include="img\redfoxx.JPG" />
+    <Content Include="index.html" />
+    <Content Include="js\bootstrap.js" />
+    <Content Include="js\bootstrap.min.js" />
+    <Content Include="js\chatwidget.js" />
+    <Content Include="js\jquery.js" />
+    <Content Include="js\plugins\flot\excanvas.min.js" />
+    <Content Include="js\plugins\flot\flot-data.js" />
+    <Content Include="js\plugins\flot\jquery.flot.js" />
+    <Content Include="js\plugins\flot\jquery.flot.pie.js" />
+    <Content Include="js\plugins\flot\jquery.flot.resize.js" />
+    <Content Include="js\plugins\flot\jquery.flot.tooltip.min.js" />
+    <Content Include="js\plugins\morris\morris-data.js" />
+    <Content Include="js\plugins\morris\morris.js" />
+    <Content Include="js\plugins\morris\morris.min.js" />
+    <Content Include="js\plugins\morris\raphael.min.js" />
+    <Content Include="RedditReader\Content\favicon.ico" />
+    <Content Include="RedditReader\Content\loading.gif" />
+    <Content Include="RedditReader\Content\nsfw.png" />
+    <Content Include="RedditReader\favicon.ico" />
+    <Content Include="RedditReader\index.html" />
+    <Content Include="RedditReader\scripts\blueimp-gallery.js" />
+    <Content Include="RedditReader\scripts\bootstrap.min.js" />
+    <Content Include="RedditReader\scripts\handlebars.min.js" />
+    <Content Include="RedditReader\scripts\jquery-1.11.0.min.js" />
+    <Content Include="RedditReader\scripts\jquery.blueimp-gallery.min.js" />
+    <Content Include="RedditReader\scripts\me.jpg" />
+    <Content Include="RedditReader\scripts\metisMenu.min.js" />
+    <Content Include="RedditReader\scripts\sb-admin-2.js" />
+    <Content Include="RedditReader\scripts\underscore-min.js" />
+    <Content Include="RedditReader\styles\blueimp-gallery.css" />
+    <Content Include="RedditReader\styles\blueimp-gallery.min.css" />
+    <Content Include="RedditReader\styles\bootstrap.min.css" />
+    <Content Include="RedditReader\styles\font-awesome.min.css" />
+    <Content Include="RedditReader\styles\metisMenu.min.css" />
+    <Content Include="RedditReader\styles\sb-admin-2.css" />
+    <Content Include="RedditReader\styles\sb-admin.css" />
+    <Content Include="UnrealTimer\Content\Armour.JPG" />
+    <Content Include="UnrealTimer\Content\bootstrap-theme.min.css" />
+    <Content Include="UnrealTimer\Content\HealthKeg.jpg" />
+    <Content Include="UnrealTimer\Content\Helmet.jpg" />
+    <Content Include="UnrealTimer\Content\loading.gif" />
+    <Content Include="UnrealTimer\Content\redeemer.jpg" />
+    <Content Include="UnrealTimer\Content\Shieldbelt.jpg" />
+    <Content Include="UnrealTimer\Content\ThighPads.jpg" />
+    <Content Include="UnrealTimer\Content\udamage.jpg" />
+    <Content Include="UnrealTimer\index.html" />
+    <Content Include="UnrealTimer\scripts\blueimp-gallery.js" />
+    <Content Include="UnrealTimer\scripts\bootstrap.min.js" />
+    <Content Include="UnrealTimer\scripts\handlebars.min.js" />
+    <Content Include="UnrealTimer\scripts\jquery-1.11.0.min.js" />
+    <Content Include="UnrealTimer\scripts\jquery.blueimp-gallery.min.js" />
+    <Content Include="UnrealTimer\scripts\me.jpg" />
+    <Content Include="UnrealTimer\scripts\moment.js" />
+    <Content Include="UnrealTimer\scripts\underscore-min.js" />
+    <Content Include="UnrealTimer\styles\blueimp-gallery.css" />
+    <Content Include="UnrealTimer\styles\blueimp-gallery.min.css" />
+    <Content Include="UnrealTimer\styles\bootstrap.min.css" />
+    <Content Include="UnrealTimer\styles\font-awesome.min.css" />
+    <Content Include="UnrealTimer\styles\sb-admin.css" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -29,14 +29,20 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-	
+    <style>
+        .hidden { display: none;}
+        html, body { background-color: white; }
+    </style>
 	
 	
 	
 </head>
 
 <body>
-
+    <script id="entry-template" type="text/x-handlebars-template">
+        <a class="twitter-timeline" href="https://twitter.com/utgame" data-widget-id="670467344376950784">Tweets by @utgame</a>
+        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+    </script>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -49,23 +55,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>-->
-                <a class="navbar-brand" href="#">UT <span class="gold">Datalus</span></a>
+                <a class="navbar-brand" href="#"><span class="gold">Datalus</span> Unreal Reader</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav top-nav" id="myTabs">
-                
+
                 <li class="dropdown">
-                    <a href="#Home" class="dropdown-toggle" data-toggle="tab" id="homeTab"><i class="fa fa-home"></i> Home</a>                
+                    <a href="#Home" class="dropdown-toggle" data-toggle="tab" id="homeTab"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                    <a href="#UtaunzHome" class="dropdown-toggle" data-toggle="tab" id="UtaunzHomeTab"><i class="fa fa-flag-o"></i> UTaunz</a> 
                 </li>
 				<li class="dropdown">
                     <a href="#Reddit" class="dropdown-toggle" data-toggle="tab" id="redditTab"><i class="fa fa-reddit"></i> Reddit</a>                
                 </li>
 				
-				<li class="dropdown">
+				<!--<li class="dropdown">
                     <a href="#OfficialTwitter" class="dropdown-toggle" data-toggle="tab" id="officialTwitterTab"><i class="fa fa-twitter"></i> Official Twitter</a>                
-                </li>				
-				
-				
+                </li>-->				
 				
 				<li class="dropdown">
                     <a href="#FragCenter" class="dropdown-toggle" data-toggle="tab" id="fragCenterTab"><i class="fa fa-youtube"></i> Frag Center</a>                
@@ -89,81 +96,19 @@
             <div class="container-fluid">
 				
 				<div id="myTabContent" class="tab-content">
-					<div role="tabpanel" class="tab-pane fade in active" id="Home" aria-labelledby="home-tab">
-						<div class="jumbotron main-jumbo text-outline">
-						  <div class="container">
-								<div class="col-md-8">
-									<h2>Welcome Datalus's...</h2>
-									<h1 class="gold text-center">Unreal Aggregatorrrrr</h1>
-									<p>My hearts beating, my hearts beating, my hands are shaking! my hands are shaking! But im still shooting and im still missing everybody :(</p>								
-									<p>Everybody op, nerf plz.  Buff Datalus , give hitscan rocket launcher.</p>								
-								</div>
-								<div class="col-md-2 pull-right">
-									<h4 class="text-center">Aus and Nz Community Links</h4>
-									<a class="btn btn-primary quick-link" href="https://www.facebook.com/groups/utaunz/?fref=nf" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
+				    <div role="tabpanel" class="tab-pane fade in active" id="Home" aria-labelledby="home-tab"></div>
+
+				    <!--
+
+                        <a class="btn btn-primary quick-link" href="https://www.facebook.com/groups/utaunz/?fref=nf" target="_blank"><i class="fa fa-facebook-square"></i> Facebook</a>
 									<a class="btn btn-default quick-link" href="http://www.unrealau.net/viewforum.php?f=2&sid=a77feb5ff13fd1ee71a7a233c7b24236" target="_blank"><i class="fa fa-list"></i> Forums</a>
 									<a class="btn btn-warning quick-link" href="http://webchat.globalgamers.net/?channels=UTaunz" id="-disable-chatTabTrigger" target="_blank"><i class="fa fa-wechat"></i> Aus Chat</a>								
 									<a class="btn btn-info quick-link" href="http://www.utaunz.com/index.html" target="_blank"><i class="fa fa-group"></i> Community</a>								
-									<a class="btn btn-success quick-link" href="http://www.skankyflat.net/" target="_blank"><i class="fa fa-fire"></i> Skanky Hub</a>																	
-									
-								</div>
-						  </div>
-						<!-- Nav tabs 
-						  <ul class="nav nav-tabs" role="tablist" id="sub-tabs">
-							<li role="presentation" class="active"><a href="#official-news" aria-controls="home" role="tab" data-toggle="tab">Official News</a></li>
-							<li role="presentation"><a href="#local-news" aria-controls="profile" role="tab" data-toggle="tab">Aus & Nz News</a></li>							
-						  </ul>			-->			  
-			
-					
-					
-						<!---->
-					
+									<a class="btn btn-success quick-link" href="http://www.skankyflat.net/" target="_blank"><i class="fa fa-fire"></i> Skanky Hub</a>		
+				    
+                        -->
 
-						  
-						</div>	
-						
-							<div class="sub-menu-section">
-								<div class="gold pull-left sub-menu-heading">NEWS</div>
-								<ul class="nav top-nav" id="sub-tabs">                
-									<li class="dropdown">
-										<a href="#official-news" class="dropdown-toggle" data-toggle="tab" id="sub-offocial-news"><i class="fa fa-newspaper-o"></i> Official Blog</a>                
-									</li>																	
-									<li class="dropdown">
-										<a href="#local-news" class="dropdown-toggle" data-toggle="tab" id="sub-local-news"><i class="fa fa-group"></i> Au&Nz News <span class="badge">New</span></a>                
-									</li>				
-								</ul>						  
-							</div>
-
-						<!-- Tab panes -->
-						<div class="tab-content">
-						<div role="tabpanel" class="tab-pane active" id="official-news">
-						<iframe id="blog-iframe" src="//www.unrealtournament.com/blog" class="blog-iframe"></iframe>
-						</div>							
-						<div role="tabpanel" class="tab-pane" id="local-news" style="padding:50px; font-size:20px;">
-							
-							<div class="container">
-								<p>Comming soon, going to have a look around try to find out what to use for this.</p>
-								<p>Happy for suggestions, reddit / blog / fb group / hybrid page?</p>													
-								<h1>If you have a moment fill out the below polls</h1>							
-								
-								<iframe src="http://strawpoll.me/embed_1/6120133" style="width: 600px; height: 690px; border: 0;">Loading poll...</iframe>
-								<iframe src="http://strawpoll.me/embed_1/6120147" style="width: 600px; height: 590px; border: 0;">Loading poll...</iframe>
-								<iframe src="http://strawpoll.me/embed_1/6120155" style="width: 600px; height: 790px; border: 0;">Loading poll...</iframe>
-							</div>
-							
-							
-						</div>							
-						</div>						
-						
-									
-						
-						
-						
-						
-					
-					</div>
-					
-					<div role="tabpanel" class="tab-pane fade" id="AusChat" aria-labelledby="profile-tab">
+				    <div role="tabpanel" class="tab-pane fade" id="AusChat" aria-labelledby="profile-tab">
 						<p>Loading....</p>
 					</div>
 					<div role="tabpanel" class="tab-pane fade" id="GlobalChat" aria-labelledby="profile-tab">
@@ -178,11 +123,13 @@
 					</div>	
 					<div role="tabpanel" class="tab-pane fade" id="FragCenter" aria-labelledby="profile-tab">
 						<p>Loading....</p>
-					</div>			
-					
-					<div role="tabpanel" class="tab-pane fade" id="OfficialTwitter" aria-labelledby="profile-tab">
-						            <a class="twitter-timeline"  href="https://twitter.com/utgame" data-widget-id="670467344376950784">Tweets by @utgame</a>
-            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+				    </div>
+
+				    <div role="tabpanel" class="tab-pane fade" id="UtaunzHome" aria-labelledby="profile-tab"></div>
+                    <div role="tabpanel" class="tab-pane fade" id="UtaunzNews" aria-labelledby="profile-tab"></div>	
+
+				    <div role="tabpanel" class="tab-pane fade" id="OfficialTwitter" aria-labelledby="profile-tab">
+						           
           
 					</div>			
 
@@ -210,85 +157,106 @@
 	<script type="text/javascript" src="/js/chatwidget.js" ></script>
 
 	<script>
-	
-	
-	var ausChatWidget = new page.chatwidget({ target:"#AusChat", url:"//webchat.globalgamers.net/?channels=UTaunz"});
-	var globalChatWidget = new page.chatwidget({ target:"#GlobalChat", url:"//webchat.globalgamers.net/?channels=unrealtournament"});
-	var unrealTimer = new page.chatwidget({ target:"#UnrealTimer", url:"/UnrealTimer/"});
-	var reddit = new page.chatwidget({ target:"#Reddit", url:"/RedditReader/#unrealtournament", forceRender:true});
-	//var officialForums = new page.chatwidget({ target:"#official-forum-iframe", url:"//forums.unrealtournament.com/search.php?searchid=1477411", forceRender:true});
-	var fragCenter = new page.chatwidget({ target:"#FragCenter", url:"//www.unrealtournament.com/fragcenter", forceRender:true});
-	var officialTwitter = new page.chatwidget({ target:"#OfficialTwitter", url:"//twitter.com/utgame", forceRender:true});
-	
-	
-	
-	$('#myTabs a').click(function (e) {
-	  e.preventDefault()
-	  $(this).tab('show');
-	});
-	
-	$("#chatTab").click(function(){	ausChatWidget.render();	});	
-	$("#globalChatTab").click(function(){ globalChatWidget.render(); });	
-	$("#timerTab").click(function(){ unrealTimer.render(); });
-	$("#fragCenterTab").click(function(){ fragCenter.render(); });
-	//$("#sub-official-forums").click(function(){ officialForums.render(); });
-	//$("#officialTwitterTab").click(function(){ officialTwitter.render(); });
-	
-	$("#redditTab").click(function(){ 
-		reddit.render(); 
-				
-				//hacking some custom css in coz yeaaaaaa boi
-		setTimeout(function() {
-		
-			var cssLink = document.createElement("link") 
-			cssLink.href = "/css/reddit-reader-styles.css"; 
-			cssLink.rel = "stylesheet"; 
-			cssLink.type = "text/css"; 
-			$("#Reddit iframe").contents().find("body").append(cssLink);
-		
-		},600);
-	
-	});
-	
-	
-	$("#officialTwitterTab").click(function(){ 
-		
-				
-		//hacking some custom css in coz yeaaaaaa boi
-		setTimeout(function() {
-		
-			var cssLink = document.createElement("link") 
-			cssLink.href = "/css/official-twitter.css"; 
-			cssLink.rel = "stylesheet"; 
-			cssLink.type = "text/css"; 
-			$("#OfficialTwitter iframe").contents().find("body").append(cssLink);
-		
-		},600);
-	
-	});	
-	
-	$("#chatTabTrigger").click(function(e){
-		e.preventDefault();
-		$("#chatTab").click();
-	});
 
-	$("#pageTimerLink").click(function(e){
-		e.preventDefault();
-		$("#timerTab").click();
-	});	
+	    var currentOpen = undefined;
+	    var blogWidget = new page.chatwidget({ target: "#Home", url: "//www.epicgames.com/unrealtournament/blog" });
+	    var utaunz = new page.chatwidget({ target: "#Utaunz", url: "//www.epicgames.com/unrealtournament/blog" });
+	    var ausChatWidget = new page.chatwidget({ target:"#AusChat", url:"//webchat.globalgamers.net/?channels=UTaunz", persist:true});
+	    var globalChatWidget = new page.chatwidget({ target: "#GlobalChat", url: "//webchat.globalgamers.net/?channels=unrealtournament", persist: true });
+	    var unrealTimer = new page.chatwidget({ target:"#UnrealTimer", url:"/UnrealTimer/"});
+	    var reddit = new page.chatwidget({ target:"#Reddit", url:"/RedditReader/#unrealtournament", forceRender:true});
+	    //var officialForums = new page.chatwidget({ target:"#official-forum-iframe", url:"//forums.unrealtournament.com/search.php?searchid=1477411", forceRender:true});
+	    var fragCenter = new page.chatwidget({ target:"#FragCenter", url:"//www.unrealtournament.com/fragcenter", forceRender:true});
+	    var officialTwitter = new page.chatwidget({
+	        target: "#OfficialTwitter", url: "//twitter.com/utgame",
+	        forceRender: false,
+	        customTemplate: $("#entry-template").html(),
+	        loadTime: 5000,
+            persist:true
+	    });
+	    var utaunzHome = new page.chatwidget({ target: "#UtaunzHome", url: "//www.utaunz.com/", loadTime: 4000 });
+	    var utaunzNews = new page.chatwidget({ target: "#UtaunzNews", url: "//www.utaunz.com/category/news/", loadTime: 4000 });
 	
 	
-	$("#myTabs a").click(function(e){
-		window.location.hash = $(this).attr("id");
-	});
+	
+	    $('#myTabs a').click(function (e) {
+	        e.preventDefault();
+	        $(this).tab('show');
+	    });
+
+	    var switchTab = function(chatwidget, operation) {
+	        if (typeof (currentOpen) !== "undefined") {
+                var persistPrevious = (typeof (currentOpen) !== "undefined" && typeof (currentOpen.el().options.persist) !== "undefined") ? currentOpen.el().options.persist : false;
+                if (!persistPrevious) {
+                    currentOpen.destroyMe();
+                    currentOpen = undefined;
+                }
+            }
+
+            currentOpen = chatwidget;
+            currentOpen.render();
+            if (typeof (operation) != "undefined") {
+                operation(chatwidget);
+            }
+	    };
+
+        
+
+	    $("#homeTab").click(function () { switchTab(blogWidget); });
+	    $("#UtaunzHomeTab").click(function () { switchTab(utaunzHome); });
+	    $("#UtaunzNewsTab").click(function () { switchTab(utaunzNews); });
+	    $("#chatTab").click(function () { switchTab(ausChatWidget); });
+	    $("#globalChatTab").click(function() { switchTab(globalChatWidget); });	
+	    $("#timerTab").click(function() { switchTab(unrealTimer); });
+	    $("#fragCenterTab").click(function() { switchTab(fragCenter); });
+	    $("#redditTab").click(function () {
+            switchTab(reddit, function(widget) {
+                setTimeout(function () {
+                    var cssLink = document.createElement("link")
+                    cssLink.href = "/css/reddit-reader-styles.css";
+                    cssLink.rel = "stylesheet";
+                    cssLink.type = "text/css";
+                    $("#Reddit iframe").contents().find("body").append(cssLink);
+                }, 600);
+            });
+	    });
 	
 	
-	var hash = window.location.hash;
-	if (hash != "") {
-		setTimeout(function(e){
-			$(hash).click();
-		},400);		
-	}
+	    $("#officialTwitterTab").click(function(){ 
+	        switchTab(officialTwitter, function(widget) {
+	            ////hacking some custom css in coz yeaaaaaa boi
+	            //setTimeout(function () {
+
+	            //    //var cssLink = document.createElement("link");
+	            //    //cssLink.href = "/css/official-twitter.css";
+	            //    //cssLink.rel = "stylesheet";
+	            //    //cssLink.type = "text/css";
+	            //    //$("#OfficialTwitter iframe").contents().find("body").append(cssLink);
+	            //    $("#OfficialTwitter iframe").css("width", "100%");
+	            //    $("#OfficialTwitter iframe").find(".timeline-Widget").css("width", "100%");
+	            //    $("#OfficialTwitter iframe").find(".timeline-Widget").css("max-width", "100%");
+	            //    timeline - Widget
+	            //}, 1000);
+	        });
+	    });
+
+	
+	    $("#myTabs a").click(function(e){
+		    window.location.hash = $(this).attr("id");
+	    });
+	
+	    var hash = window.location.hash;
+	    if (hash !== "" && hash !== "#") {
+	        setTimeout(function(e) {
+	                $(hash).click();
+	            },
+	            400);
+	    } else {
+	        setTimeout(function (e) {
+	            $("#homeTab").click();
+	        },400);
+
+	    }
 	
 	
 	</script>
