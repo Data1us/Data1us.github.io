@@ -26,8 +26,7 @@
 		  
 		  .display-none{display:none !important;}
 		  .img-thumbnail { padding:10px; margin:10px; position:relative;}
-		  #image-section .img-thumbnail img { width:180px; height:180px;}
-		  #text-section .img-thumbnail img { width:150px; height:150px;}
+		  
 		  .img-thumbnail .reddit-item-comments {
 			position:absolute; 
 			background-color:transparent;
@@ -48,7 +47,19 @@
 			.blue {color:blue;}
 		
 		@media screen and (min-width: 1000px) {
-			#image-section .img-thumbnail img { width:250px; height:250px; margin:25px;}
+			#image-section img { width:250px; height:250px;}
+		}
+		
+		@media (min-width: 992px) {
+			#image-section img { width:200px; height:200px;}
+		}
+		
+		@media (min-width: 400px) {
+			#image-section img { width:150px; height:150px;}
+		}
+		
+		@media (min-width: 1200px) {
+			#image-section img { width:200px; height:200px;}
 		}
 			
 	</style>
@@ -60,7 +71,7 @@
 <div id="wrapper">
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -105,12 +116,12 @@
             <!-- /.navbar-static-side -->
         </nav>
 
-        <div id="page-wrapper" style="min-height: 330px;">
+        <div id="page-wrapper" style="min-height: 330px; margin-top:50px;">
             
             
 			<!-- container for the image -->
 			<div id="image-section" class="display-none">
-				<div id="links"></div>
+				<div id="links" class="row"></div>
 				<a id="image-more" class="btn btn-primary" > more</a>
 			</div>
 			<div id="text-section" class="">
@@ -161,10 +172,12 @@
           </div>            
             
             
-            
+          
         </div>
         
 
+		
+		
     </div>  
 
     <!-- JavaScript -->
@@ -181,11 +194,11 @@
 	</script>
 
 	<script id="reddit-image-template" type="text/x-handlebars-template">
-		<div class="img-thumbnail">
-			<a href="{{link}}" title="{{title}}" rel="{{name}}" class="reddit-image-link" data-gallery>
-				<img src="{{thumbnail}}" alt="Banana">
-			</a>	
-			<div class="reddit-item-comments "><a target="_blank" href="http://www.reddit.com{{permalink}}"><span class="badge">{{commentCount}}<span></a></div>
+	
+		<div class="col-xl-2 col-lg-3 col-md-4 col-xs-6 thumb">
+			<a href="{{link}}" title="{{title}}" rel="{{name}}" class="reddit-image-link thumbnail" data-gallery>
+				<img class="img-responsive" src="{{thumbnail}}" alt="Banana">
+			</a>
 		</div>
 		
 	</script>
@@ -194,13 +207,13 @@
 		<div class="reddit-item row">
 
 			
-				<div class="col-md-2">
+				<div class="col-sm-12 col-md-3 col-lg-2">
 					{{#if thumbnail}} 	
 						<div class="redit-item-thumbnail img-thumbnail"><img src="{{thumbnail}}" /></div>
 					{{/if}}
 				</div>				
 				
-				<div class="col-md-8">
+				<div class="col-sm-12 col-md-9 col-lg-10">
 
 					<h3 class="reddit-item-heading">{{title}}</h4>  
 					<input type="hidden" value="{{name}}" />
