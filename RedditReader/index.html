@@ -61,6 +61,15 @@
 		@media (min-width: 1200px) {
 			#image-section img { width:200px; height:200px;}
 		}
+		
+		/* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+.wordwrap { 
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;      /* IE */
+}
 			
 	</style>
   </head>
@@ -218,7 +227,7 @@
 					<h3 class="reddit-item-heading">{{title}}</h4>  
 					<input type="hidden" value="{{name}}" />
 					
-					<div class="redit-item-content">{{content}}</div>
+					<div class="redit-item-content wordwrap">{{content}}</div>
 					
 					<div class="redit-item-controls">
 						<div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
