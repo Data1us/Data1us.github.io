@@ -135,57 +135,19 @@
     </div>  
 
     <!-- JavaScript -->
+
     <script src="./scripts/jquery-1.11.0.min.js"></script>
-    <script src="./scripts/handlebars.min.js"></script>
+    <script src="./scripts/handlebars-v4.0.5.js"></script>
     <script src="./scripts/underscore-min.js"></script>
     <script src="./scripts/bootstrap.min.js"></script>
 	<script src="./scripts/jquery.blueimp-gallery.min.js"></script>
 	<script src="./scripts/metisMenu.min.js"></script>
 	<script src="./scripts/sb-admin-2.js"></script>
+
+    <script src="./scripts/sitemain.js"></script>
+    <script src="./scripts/Templates/SiteTemplates.js"></script>
 	
-	<script id="left-menu-template" type="text/x-handlebars-template">  
-	  <li><a id="{{Name}}" href="" rel="{{Location}}" class="left-menu-item"><i class="fa fa-dashboard"></i> <span>{{Name}}</span></a></li>
-	</script>
-
-	<script id="reddit-image-template" type="text/x-handlebars-template">
 	
-		<div class="col-xl-2 col-lg-3 col-md-4 col-xs-6 thumb">
-			<a href="{{link}}" title="{{title}}" rel="{{name}}" class="reddit-image-link thumbnail" data-gallery>
-				<img class="img-responsive" src="{{thumbnail}}" alt="Banana">
-			</a>
-		</div>
-		
-	</script>
-
-	<script id="reddit-item-template" type="text/x-handlebars-template">
-		<div class="reddit-item row">
-			
-				<div class="col-sm-12 col-md-3 col-lg-2">
-					{{#if thumbnail}} 	
-						<div class="redit-item-thumbnail img-thumbnail"><img src="{{thumbnail}}" /></div>
-					{{/if}}
-				</div>				
-				
-				<div class="col-sm-12 col-md-9 col-lg-10">
-
-					<h3 class="reddit-item-heading">{{title}}</h4>  
-					<input type="hidden" value="{{name}}" />
-					
-					<div class="redit-item-content wordwrap">{{content}}</div>
-					
-					<div class="redit-item-controls">
-						<div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
-						{{#if isLink}}
-						<div class="reddit-item-link"><a target="_blank" href="{{link}}">{{linkShort}}</a></div>        
-						{{/if}}
-						<div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
-					</div>				
-				
-				</div>
-			
-		</div>
-		<hr/>
-	</script>	
 	
 	<script>
 		(function ($) {
@@ -237,23 +199,13 @@
 	
     
     <script>
-			
+		
 	
         var leftMenu = $("#side-menu");
-        var leftMenuTemplate = (function() {
-            var markup = $("#left-menu-template").html();
-            return Handlebars.compile(markup);
-        })();
+        
         var content = $("#reader-content");
 		var links = $("#links");
-        var contentItemTemplate = (function () {
-            var markup = $("#reddit-item-template").html();
-            return Handlebars.compile(markup);
-        })();
-        var imageItemTemplate = (function () {
-            var markup = $("#reddit-image-template").html();
-            return Handlebars.compile(markup);
-        })();
+        
 		var imageMode = function(){
 			return $("#display-mode a.active").prop("rel") === "image";
 		};
@@ -278,7 +230,7 @@
 
         var menuMarkup =
             _.each(readers, function(reader) {
-                leftMenu.append(leftMenuTemplate(reader));
+                leftMenu.append(page.templates.LeftMenuItem(reader).replace(/\ufeff/, ''));
             });				
 
 		
@@ -330,7 +282,7 @@
 							itemModel.linkShort = (item.data.url.length > 50) ? item.data.url.substring(0, 50) + "...." : item.data.url;
 						}
 						$("#loader").hide();
-						content.append(contentItemTemplate(itemModel));						
+						content.append(page.templates.RedditItem(itemModel).replace(/\ufeff/, ''));
 						
 					});
 				}
@@ -352,7 +304,7 @@
 						}
 						
 						if (!_.isUndefined(itemModel.thumbnail) && !_.isUndefined(itemModel.link)){						
-							links.append(imageItemTemplate(itemModel));							
+						    links.append(page.templates.RedditImage(itemModel).replace(/\ufeff/, ''));
 						}												
 						$("#loader").hide();
 					});				

@@ -1,0 +1,28 @@
+﻿<div class="reddit-item row">
+
+    <div class="col-sm-12 col-md-3 col-lg-2">
+        {{#if thumbnail}}
+        <div class="redit-item-thumbnail img-thumbnail"><img src="{{thumbnail}}" /></div>
+        {{/if}}
+    </div>
+
+    <div class="col-sm-12 col-md-9 col-lg-10">
+
+        <h3 class="reddit-item-heading">
+            {{title}}</h4>
+            <input type="hidden" value="{{name}}" />
+
+            <div class="redit-item-content wordwrap">{{content}}</div>
+
+            <div class="redit-item-controls">
+                <div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
+                {{#if isLink}}
+                <div class="reddit-item-link"><a target="_blank" href="{{link}}">{{linkShort}}</a></div>
+                {{/if}}
+                <div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
+            </div>
+
+    </div>
+
+</div>
+<hr />
