@@ -99,6 +99,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
+    <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
+    <None Include="RedditReader\scripts\Templates\RedditItem.handlebars" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-rtl.css" />
@@ -139,12 +142,16 @@
     <Content Include="RedditReader\index.html" />
     <Content Include="RedditReader\scripts\blueimp-gallery.js" />
     <Content Include="RedditReader\scripts\bootstrap.min.js" />
+    <Content Include="RedditReader\scripts\fitonscreen.js" />
+    <Content Include="RedditReader\scripts\handlebars-v4.0.5.js" />
     <Content Include="RedditReader\scripts\handlebars.min.js" />
     <Content Include="RedditReader\scripts\jquery-1.11.0.min.js" />
     <Content Include="RedditReader\scripts\jquery.blueimp-gallery.min.js" />
     <Content Include="RedditReader\scripts\me.jpg" />
     <Content Include="RedditReader\scripts\metisMenu.min.js" />
     <Content Include="RedditReader\scripts\sb-admin-2.js" />
+    <Content Include="RedditReader\scripts\sitemain.js" />
+    <Content Include="RedditReader\scripts\Templates\SiteTemplates.js" />
     <Content Include="RedditReader\scripts\underscore-min.js" />
     <Content Include="RedditReader\styles\blueimp-gallery.css" />
     <Content Include="RedditReader\styles\blueimp-gallery.min.css" />
@@ -153,6 +160,7 @@
     <Content Include="RedditReader\styles\metisMenu.min.css" />
     <Content Include="RedditReader\styles\sb-admin-2.css" />
     <Content Include="RedditReader\styles\sb-admin.css" />
+    <Content Include="RedditReader\styles\site.css" />
     <Content Include="UnrealTimer\Content\Armour.JPG" />
     <Content Include="UnrealTimer\Content\bootstrap-theme.min.css" />
     <Content Include="UnrealTimer\Content\HealthKeg.jpg" />
