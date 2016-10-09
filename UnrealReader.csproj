@@ -152,6 +152,7 @@
     <Content Include="RedditReader\scripts\sb-admin-2.js" />
     <Content Include="RedditReader\scripts\sitemain.js" />
     <Content Include="RedditReader\scripts\Templates\SiteTemplates.js" />
+    <Content Include="RedditReader\scripts\RedditView.js" />
     <Content Include="RedditReader\scripts\underscore-min.js" />
     <Content Include="RedditReader\styles\blueimp-gallery.css" />
     <Content Include="RedditReader\styles\blueimp-gallery.min.css" />
