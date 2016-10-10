@@ -7,7 +7,22 @@ templates['LeftMenuItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(
     + alias4(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Name","hash":{},"data":data}) : helper)))
     + "\" href=\"\" rel=\""
     + alias4(((helper = (helper = helpers.Location || (depth0 != null ? depth0.Location : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Location","hash":{},"data":data}) : helper)))
-    + "\" class=\"left-menu-item\">\r\n        <i class=\"fa fa-dashboard\"></i> \r\n        <span>"
+    + "\" class=\"left-menu-item\">\r\n        <!--<i class=\"fa fa-dashboard\"></i> -->\r\n        <span>"
+    + alias4(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Name","hash":{},"data":data}) : helper)))
+    + "</span>\r\n    </a>\r\n</li>";
+},"useData":true});
+templates['LeftMenuItemNew'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "﻿<li>\r\n    <a data-name=\""
+    + alias4(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Name","hash":{},"data":data}) : helper)))
+    + "\" href=\"\" data-location=\""
+    + alias4(((helper = (helper = helpers.Location || (depth0 != null ? depth0.Location : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Location","hash":{},"data":data}) : helper)))
+    + "\" class=\"left-menu-item-new\" data-screen=\""
+    + alias4(((helper = (helper = helpers.Screen || (depth0 != null ? depth0.Screen : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Screen","hash":{},"data":data}) : helper)))
+    + "\" data-type=\""
+    + alias4(((helper = (helper = helpers.type || (depth0 != null ? depth0.type : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"type","hash":{},"data":data}) : helper)))
+    + "\">\r\n        <!--<i class=\"fa fa-dashboard\"></i> -->\r\n        <span>"
     + alias4(((helper = (helper = helpers.Name || (depth0 != null ? depth0.Name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"Name","hash":{},"data":data}) : helper)))
     + "</span>\r\n    </a>\r\n</li>";
 },"useData":true});

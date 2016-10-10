@@ -99,6 +99,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RedditReader\scripts\Templates\LeftMenuItemNew.handlebars" />
     <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditItem.handlebars" />
@@ -149,6 +150,9 @@
     <Content Include="RedditReader\scripts\jquery.blueimp-gallery.min.js" />
     <Content Include="RedditReader\scripts\me.jpg" />
     <Content Include="RedditReader\scripts\metisMenu.min.js" />
+    <Content Include="RedditReader\scripts\RedditImageView.js" />
+    <Content Include="RedditReader\scripts\RedditDataProvider.js" />
+    <Content Include="RedditReader\scripts\RedditTextScreen.js" />
     <Content Include="RedditReader\scripts\sb-admin-2.js" />
     <Content Include="RedditReader\scripts\sitemain.js" />
     <Content Include="RedditReader\scripts\Templates\SiteTemplates.js" />

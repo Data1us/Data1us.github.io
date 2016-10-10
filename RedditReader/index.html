@@ -14,7 +14,7 @@
     <link href="./styles/sb-admin-2.css" rel="stylesheet">  	
 	<link rel="stylesheet" href="./styles/blueimp-gallery.min.css">	
 	<link href="./styles/metisMenu.min.css" rel="stylesheet">
-	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <link href="./styles/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="./styles/site.css" rel="stylesheet" type="text/css">
 	
   </head>
@@ -147,6 +147,9 @@
     <script src="./scripts/sitemain.js"></script>
     <script src="./scripts/Templates/SiteTemplates.js"></script>
       <script src="./scripts/RedditView.js"></script>
+      <script src="./scripts/RedditImageView.js"></script>
+      <script src="./scripts/RedditDataProvider.js"></script>
+      <script src="./scripts/RedditTextScreen.js"></script>
 
 	
     
@@ -180,11 +183,22 @@
             { Name: "Longboarding", Location: "longboarding" }            
         ];
 
+        var screens = {
+            "RedditTextScreen": page.RedditTextScreen
+        };
+        var readersNew = [
+            { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Sprinting", Location: "sprinting", Screen: "RedditTextScreen", type: "new" }
+        ];
+
         var menuMarkup =
             _.each(readers, function(reader) {
                 leftMenu.append(page.templates.LeftMenuItem(reader).replace(/\ufeff/, ''));
             });				
-
+                
+        _.each(readersNew, function (reader) {
+            leftMenu.append(page.templates.LeftMenuItemNew(reader).replace(/\ufeff/, ''));
+        });
 		
 		var scrollToTop = function() {
 			//$("html, body").animate({ scrollTop: 0 }, "fast");	
@@ -215,34 +229,16 @@
 		var renderItems = function(json){
 			loading=true;
 			var data = json.data;
-			if (!_.isUndefined(data) && !_.isUndefined(data.children)) {
-			
-				if (!imageMode()) {
-					_.each(data.children, function(item) {
-						var itemModel = {
-							title: item.data.title,
-							author: item.data.author,
-							content: item.data.selftext || item.data.selftext_html,
-							permalink: item.data.permalink,
-							name: item.data.name
-						};
-						if (!_.isUndefined(item.data.num_comments)) itemModel.commentCount = item.data.num_comments;
-						if (!_.isUndefined(item.data.thumbnail) && item.data.thumbnail != "" && item.data.thumbnail != "self" && item.data.thumbnail != "default") itemModel.thumbnail = item.data.thumbnail;
-						if (!_.isUndefined(item.data.url) && item.data.url != "" && item.data.url.indexOf("reddit.com") == -1) {
-							itemModel.isLink = true;
-							itemModel.link = item.data.url;
-							itemModel.linkShort = (item.data.url.length > 50) ? item.data.url.substring(0, 50) + "...." : item.data.url;
-						}
-						$("#loader").hide();
-						content.append(page.templates.RedditItem(itemModel).replace(/\ufeff/, ''));
-						
-					});
+			if (!_.isUndefined(data) && !_.isUndefined(data.children)) {			
+			    if (!imageMode()) {
+			        var x = new page.RedditView({ target: content });
+			        x.render(data);			        
 				}
 				else {			
-				    var redditView = new page.RedditView({ target: links });
-				    redditView.render(data);
-				    $("#loader").hide();
-				}
+				    var x = new page.RedditImageView({ target: links });
+				    x.render(data);				   
+			    }
+			    $("#loader").hide();
 			}		
 			
 			//scrollToTop();
@@ -274,6 +270,30 @@
 			
             performSubreditSearch(rel);
         });
+
+        var currentScreen = undefined;
+
+        $(".left-menu-item-new").click(function (e) {
+            e.preventDefault();
+            var item = $(this);
+            var screen = item.attr("data-screen");
+            var name = item.attr("data-name");
+            var location = item.attr("data-location");
+            var type = item.attr("data-type");
+
+            //if we have a screen running lets clear it.
+            if (typeof (currentScreen) !== "undefined") currentScreen.dispose();
+
+            content.html(""); links.html(""); //Legacy rubish for the time being.
+           
+            var scr = new screens[screen]({
+                target: content,
+                name: name,
+                itemType: type
+            });
+            currentScreen = scr;
+            scr.render();
+        });
 		
 		var performSubreditSearch = function(name, after, clearContent, scrollTop){
 			if (_.isUndefined(clearContent)) clearContent = true;			
@@ -290,27 +310,17 @@
 				itemType = typeof(reader.type) != "undefined" ? reader.type : "new"
 			}
 			
-			
-			
-			
             $("#loader").show();						
 			var lastItem = $(".reddit-item").last();
-			var limit=(imageMode()) ? 100 : 25;
-			var rel = "http://www.reddit.com/r/" + name + "/" + itemType + "/.json?limit=" + limit;					
+			var limit=(imageMode()) ? 100 : 25;								
 			setHash(name);
 			
-			if (!_.isUndefined(after)) rel = rel + "&after=" + after;
-			
-            $.getJSON(rel + "&jsonp=?", function (json) {
-                renderItems(json);				
-				if (!clearContent) {
-					//$("html, body").animate({scrollTop: lastItem.offset().top - 100});
-					//$("html, body").height()
-				}
-				loading = false;
-				
-				if (scrollTop) scrollToTop();
-            });				
+			var dp = new page.RedditDataProvider();
+			dp.get(name, itemType, limit, after, function (json) {
+			    renderItems(json);			   
+			    loading = false;
+			    if (scrollTop) scrollToTop();
+			});
 		};
 		
 		
