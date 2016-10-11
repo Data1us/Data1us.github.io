@@ -289,9 +289,11 @@
             var scr = new screens[screen]({
                 target: content,
                 name: name,
-                itemType: type
+                itemType: type,
+                location: location
             });
             currentScreen = scr;
+            setHash(location);
             scr.render();
         });
 		
@@ -390,13 +392,21 @@
 		
 		//render the current reddit.
 		var hash = getHash();
-		if (!_.isUndefined(hash)){
-			var item = $(hash);
-			if (item.length > 0) item.click();
-			else {
-				performSubreditSearch(hash.replace("#", ""), undefined, undefined);
-				$("#SubreditSearch").val(hash.replace("#", ""));				
-			}
+		if (!_.isUndefined(hash)) {
+
+            //do the new logic if we are running a new item.
+		    var newViews = _.filter(readersNew, function (e) { return "#" + e.Location == getHash() });
+		    if (newViews.length > 0) {
+		        $(".left-menu-item-new[data-location=" + newViews[0].Location + "]").click();
+		    }
+		    else {
+		        var item = $(hash);
+		        if (item.length > 0) item.click();
+		        else {
+		            performSubreditSearch(hash.replace("#", ""), undefined, undefined);
+		            $("#SubreditSearch").val(hash.replace("#", ""));
+		        }
+		    }			
 		}	
 		
 		

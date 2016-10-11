@@ -10,6 +10,7 @@
             : page.templates.RedditItem;
         var dataProvider = new page.RedditDataProvider();
         var name = options.name;
+        var location = options.location;
         var itemType = options.itemType;
         var loadInterval = undefined;
         var loading = false;
