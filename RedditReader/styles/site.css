@@ -53,3 +53,5 @@
    word-wrap: break-word;      /* IE */
 }
 			
+/*REDIT TEXT SCREEN SPECIFIC STYLES*/
+.reddit-text-screen .loader-checker { visibility: hidden; }

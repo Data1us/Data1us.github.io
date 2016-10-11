@@ -51,8 +51,9 @@
         self.priv = {};
         self.priv.renderItems = function (after) {
             loading = true;
+            self.priv.loader.show();
             //now lets get the reddit items.
-            var limit = 50;
+            var limit = 25;
             self.el.dataProvider.get(name, itemType, limit, after, function (json) {
                 var data = json.data;
                 if (!_.isUndefined(data) && !_.isUndefined(data.children)) {
@@ -63,7 +64,13 @@
 
                 }
                 loading = false;
+                self.priv.loader.hide();
             });
+        }
+        self.priv.loader = {
+            show: function () { self.el.target.find(".loader-icon").show(); },
+            hide: function () { self.el.target.find(".loader-icon").hide(); },
+
         }
     });
 

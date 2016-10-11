@@ -75,6 +75,6 @@ templates['RedditItem'] = template({"1":function(container,depth0,helpers,partia
     + "</a></div>\r\n            </div>\r\n\r\n    </div>\r\n\r\n</div>\r\n<hr />";
 },"useData":true});
 templates['RedditTextScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "﻿<div class=\"reddit-text-screen\">\r\n    <div class=\"row screen-items\"></div>\r\n    <div class=\"row screen-loader\">x</div>\r\n</div>";
+    return "﻿<div class=\"reddit-text-screen\">\r\n    <div class=\"row screen-items\"></div>\r\n    <div class=\"row screen-loader\">\r\n        <div class=\"col-xs-12 loader-checker\">x</div>\r\n        <div class=\"col-xs-12 loader-icon text-center\">\r\n            <img src=\"./Content/loading.gif\" class=\"img-circle\" />\r\n        </div>\r\n    </div>\r\n</div>";
 },"useData":true});
 })();
