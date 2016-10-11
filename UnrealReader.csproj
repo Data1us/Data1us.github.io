@@ -103,6 +103,7 @@
     <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditItem.handlebars" />
+    <None Include="RedditReader\scripts\Templates\RedditTextScreen.handlebars" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-rtl.css" />

@@ -9,6 +9,18 @@
             ? options.customTemplate
             : page.templates.RedditItem;
 
+        //really nasty is image function.
+        var isImage = function(input){
+        	if (input.indexOf(".jpg") > 0) return true;
+        	if (input.indexOf(".gif") > 0 && input.indexOf(".gifv") == -1) return true;
+        	return false;
+        };
+
+        var getThumbnail = function(input) {
+        	if (input.indexOf("nsfw") > -1) return "/Content/nsfw.png";
+        	return input;
+        }
+
         self.el = {
             target: target,
             template: template,
@@ -32,9 +44,8 @@
                     itemModel.link = item.data.url;
                     itemModel.linkShort = (item.data.url.length > 50) ? item.data.url.substring(0, 50) + "...." : item.data.url;
                 }
-
-                
-                    self.el.target.append(self.el.template(itemModel).replace(/\ufeff/, ''));
+                                
+                self.el.target.append(self.el.template(itemModel).replace(/\ufeff/, ''));
                               
             });
 

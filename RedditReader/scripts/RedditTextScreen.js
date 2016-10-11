@@ -13,7 +13,8 @@
         var location = options.location;
         var itemType = options.itemType;
         var loadInterval = undefined;
-        var loading = false;
+        var loading = true;
+        var loadAfter = undefined;
 
         self.el = {
             target: target,
@@ -23,7 +24,8 @@
         }
 
 
-        self.render = function () {            
+        self.render = function () {
+            loadAfter = undefined;
             self.el.target.html(page.templates.RedditTextScreen());
             self.priv.renderItems(undefined);
             self.attachEvents();            
@@ -35,8 +37,8 @@
             loadInterval = setInterval(function(e) {
                 if ($(self.el.target.find(".screen-loader")).isOnScreen() && !loading) {
                     loading = true;
-            	    var after = self.el.target.find(".screen-items .reddit-item").last().find("input").val();
-            	    self.priv.renderItems(after);            		
+            	    //var after = self.el.target.find(".screen-items .reddit-item").last().find("input").val();
+                    self.priv.renderItems(loadAfter);
             	}
             }, 100);
 
@@ -54,7 +56,7 @@
             self.priv.loader.show();
             //now lets get the reddit items.
             var limit = 25;
-            self.el.dataProvider.get(name, itemType, limit, after, function (json) {
+            self.el.dataProvider.get(location, itemType, limit, after, function (json) {
                 var data = json.data;
                 if (!_.isUndefined(data) && !_.isUndefined(data.children)) {
 
@@ -62,6 +64,15 @@
                     var x = new page.RedditView({ target: self.el.target.find(".screen-items") });
                     x.render(data);
 
+                    if (typeof (data.after) == "undefined" || data.after == null) clearInterval(loadInterval); //if this happens there are no more results to load.  Stop loading.
+                    loadAfter = data.after;
+
+                }
+                else {
+                    //we got no results, leave this thing as loading, and return
+                    self.priv.loader.hide();
+                    loading = true;
+                    return;
                 }
                 loading = false;
                 self.priv.loader.hide();

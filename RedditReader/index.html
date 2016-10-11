@@ -45,7 +45,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
                     <ul class="nav in" id="side-menu">
-                        <li class="sidebar-search">
+                        <!--<li class="sidebar-search">
                             <div class="input-group custom-search-form">
                                 <input type="text" class="form-control" placeholder="Search..." id="SubreditSearch">
                                 <span class="input-group-btn">
@@ -54,14 +54,14 @@
                                 </button>
                             </span>
                             </div>
-                            <!-- /input-group -->
+                            
                         </li>  
 						<li>
 							<div id="display-mode" class="btn-group">
 								<a class="btn btn-default active" rel="text" aria-label="Left Align">Text</a>
 								<a class="btn btn-default" rel="image" aria-label="Center Align">Image</a>					
 							</div>			
-						</li>
+						</li>-->
 						
                     </ul>
                 </div>
@@ -74,13 +74,12 @@
             
             
 			<!-- container for the image -->
-			<div id="image-section" class="display-none">
+			<!--<div id="image-section" class="display-none">
 				<div id="links" class="row"></div>
 				<a id="image-more" class="btn btn-primary" > more</a>
-			</div>
+			</div>-->
 			<div id="text-section" class="">
-				<div id="reader-content"></div>
-				<div id="loaderrrr">x</div>
+				<div id="reader-content"></div>				
 			</div>
 
 			<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
@@ -155,125 +154,53 @@
     
     <script>
 		
-	
-        var leftMenu = $("#side-menu");
-        
+	    //some holding variables and helper methods.
+        var leftMenu = $("#side-menu");        
         var content = $("#reader-content");
-		var links = $("#links");
-        
-		var imageMode = function(){
-			return $("#display-mode a.active").prop("rel") === "image";
-		};
-		
-		
-		var loading = true;
-        var readers = [
-			{ Name: "UT4", Location: "unrealtournament" },
-			{ Name: "Warframe", Location: "warframe" },
-			{ Name: "Protoss", Location: "allthingsprotoss" },
-            { Name: "Snowboarding", Location: "snowboarding" },		
-			{ Name: "Freediving", Location: "freediving" },
-            { Name: "Surfing", Location: "surfing" },
-            { Name: "Stand Up Paddle", Location: "sup" },
-            { type: "hot", Name: "Pics", Location: "pics" },
-            { Name: "Hockey", Location: "fieldhockey" },
-            { Name: "Freeboard", Location: "freebord" },
-            { Name: "Wakeboarding", Location: "wake" },
-            { Name: "Kiteboarding", Location: "Kiteboarding" },
-            { Name: "Longboarding", Location: "longboarding" }            
-        ];
+        var links = $("#links");
+        var currentScreen = undefined;
+        var scrollToTop = function () {
+            window.scrollTo(0, 0);
+        };
+        var setHash = function (name) {
+            if (_.isUndefined(window.location.hash)) return;
+            window.location.hash = name;
+        }
+        var getHash = function () {
+            if (_.isUndefined(window.location.hash)) return;
+            return window.location.hash;
+        }
 
+        //all our screens and left menu items.
         var screens = {
             "RedditTextScreen": page.RedditTextScreen
         };
         var readersNew = [
-            { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },            
+            { Name: "UT4", Location: "unrealtournament", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Warframe", Location: "warframe", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Protoss", Location: "allthingsprotoss", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Snowboarding", Location: "snowboarding", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Freediving", Location: "freediving", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Surfing", Location: "surfing", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Stand Up Paddle", Location: "sup", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Pics", Location: "pics", Screen: "RedditTextScreen", type: "hot" },
+            { Name: "Hockey", Location: "fieldhockey", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Freeboard", Location: "freebord", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Wakeboarding", Location: "wake", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Kiteboarding", Location: "Kiteboarding", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Longboarding", Location: "longboarding", Screen: "RedditTextScreen", type: "new" },
             { Name: "Sprinting", Location: "sprinting", Screen: "RedditTextScreen", type: "new" }
         ];
 
-        var menuMarkup =
-            _.each(readers, function(reader) {
-                leftMenu.append(page.templates.LeftMenuItem(reader).replace(/\ufeff/, ''));
-            });				
-                
+        //lets render out all the menu items.
         _.each(readersNew, function (reader) {
             leftMenu.append(page.templates.LeftMenuItemNew(reader).replace(/\ufeff/, ''));
         });
-		
-		var scrollToTop = function() {
-			//$("html, body").animate({ scrollTop: 0 }, "fast");	
-			window.scrollTo(0,0);
-		};
-		
-		var setHash = function(name) {
-			if (_.isUndefined(window.location.hash)) return;
-			window.location.hash = name;
-		}
-		
-		var getHash = function() {
-			if (_.isUndefined(window.location.hash)) return;
-			return window.location.hash;
-		}
-		
-		var isImage = function(input){
-			if (input.indexOf(".jpg") > 0) return true;
-			if (input.indexOf(".gif") > 0 && input.indexOf(".gifv") == -1) return true;
-			return false;
-		};
-		
-		var getThumbnail = function(input) {
-			if (input.indexOf("nsfw") > -1) return "/Content/nsfw.png";
-			return input;
-		}
-		
-		var renderItems = function(json){
-			loading=true;
-			var data = json.data;
-			if (!_.isUndefined(data) && !_.isUndefined(data.children)) {			
-			    if (!imageMode()) {
-			        var x = new page.RedditView({ target: content });
-			        x.render(data);			        
-				}
-				else {			
-				    var x = new page.RedditImageView({ target: links });
-				    x.render(data);				   
-			    }
-			    $("#loader").hide();
-			}		
-			
-			//scrollToTop();
-		};		
-		
-		var activate = function(item) {			
-			deactivateAll();
-			item.addClass("IsActive");			
-		}
-		
-		var deactivateAll = function() {
-			$("a.IsActive").removeClass("IsActive");
-		};
-		
-        $(".left-menu-item").click(function(e) {
-			$(".navbar-header button").click();
-            e.preventDefault();
-			loading = true;
-            content.html("");
-			links.html("");
-            $("#loader").show();
-            var item = $(this),
-                rel = item.attr("rel"),
-				name = item.find("span").html();
-			setHash(name);
-			
-			activate(item);
-			$("#SubreditSearch").val("");
-			
-            performSubreditSearch(rel);
-        });
 
-        var currentScreen = undefined;
-
+        //event to attach the menu items.
         $(".left-menu-item-new").click(function (e) {
+            $(".navbar-header button").click(); // this should hide the menu in mobile mode, a bit hacky i know
             e.preventDefault();
             var item = $(this);
             var screen = item.attr("data-screen");
@@ -295,101 +222,10 @@
             currentScreen = scr;
             setHash(location);
             scr.render();
+
+            scrollToTop();
         });
-		
-		var performSubreditSearch = function(name, after, clearContent, scrollTop){
-			if (_.isUndefined(clearContent)) clearContent = true;			
-			if (clearContent) content.html("");
-			if (_.isUndefined(scrollTop)) scrollTop = true;			
-			
-			var matching = _.filter(readers, function(obj) {    
-				return obj.Location.toLowerCase() === name.toLowerCase();
-			});
-			
-			var itemType = "new";
-			if (matching.length > 0) {
-				var reader = matching[0];
-				itemType = typeof(reader.type) != "undefined" ? reader.type : "new"
-			}
-			
-            $("#loader").show();						
-			var lastItem = $(".reddit-item").last();
-			var limit=(imageMode()) ? 100 : 25;								
-			setHash(name);
-			
-			var dp = new page.RedditDataProvider();
-			dp.get(name, itemType, limit, after, function (json) {
-			    renderItems(json);			   
-			    loading = false;
-			    if (scrollTop) scrollToTop();
-			});
-		};
-		
-		
-		var initSearch = function() {			
-			$(".navbar-header button").click();
-			var name = $("#SubreditSearch").val();
-			deactivateAll();
-			
-			if (imageMode()){			
-				links.html("");
-				performSubreditSearch(name);				
-			}
-			else {
-				setHash(name);
-				content.html("");	
-			}
-		};
-		
-		$("#SubreditSearch").keyup(function(e){
-			var keycode = (e.keyCode ? e.keyCode : e.which);
-			if(keycode != '13') return;
-			initSearch();
-		});
-		
-		$("#SubreditSearchBtn").click(function(e){
-			e.preventDefault();
-			initSearch();
-		});
-		
-		$("#image-more").click(function(e){
-			e.preventDefault();
-			var hash = getHash().replace("#","");
-			var lastItem = $("#links a.reddit-image-link").last().prop("rel");
-			performSubreditSearch(hash, lastItem, false, false);			
-		});	
-		
-		
-		$("#display-mode a").click(function(e){
-			e.preventDefault();
-			$(".navbar-header button").click();
-			$("#display-mode a.active").removeClass("active");
-			$(this).addClass("active");
-			var hash = getHash().replace("#","");
-			if (imageMode()){	
-				$("#image-section").removeClass("display-none");
-				$("#text-section").addClass("display-none");						
-				links.html("");
-				performSubreditSearch(hash);				
-			}
-			else {								
-				content.html("");	
-				$("#image-section").addClass("display-none");
-				$("#text-section").removeClass("display-none");										
-			}			
-		});
-		
-		
-		//var doLoad = $("#loaderrrr");
-		//setInterval(function(e){
-		//	if (doLoad.isOnScreen() && !loading) {
-		//		loading=true;				
-		//		var hash = getHash().replace("#","");
-		//		var lastItem = $(".reddit-item").last().find("input").val();
-				//performSubreditSearch(hash, lastItem, false, false);
-		//	}
-		//},50);
-		
+				
 		//render the current reddit.
 		var hash = getHash();
 		if (!_.isUndefined(hash)) {
@@ -399,17 +235,7 @@
 		    if (newViews.length > 0) {
 		        $(".left-menu-item-new[data-location=" + newViews[0].Location + "]").click();
 		    }
-		    else {
-		        var item = $(hash);
-		        if (item.length > 0) item.click();
-		        else {
-		            performSubreditSearch(hash.replace("#", ""), undefined, undefined);
-		            $("#SubreditSearch").val(hash.replace("#", ""));
-		        }
-		    }			
 		}	
-		
-		
 
     </script>        
     
