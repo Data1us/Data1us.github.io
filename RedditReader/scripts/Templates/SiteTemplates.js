@@ -74,4 +74,7 @@ templates['RedditItem'] = template({"1":function(container,depth0,helpers,partia
     + alias4(((helper = (helper = helpers.commentCount || (depth0 != null ? depth0.commentCount : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"commentCount","hash":{},"data":data}) : helper)))
     + "</a></div>\r\n            </div>\r\n\r\n    </div>\r\n\r\n</div>\r\n<hr />";
 },"useData":true});
+templates['RedditTextScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "﻿<div class=\"reddit-text-screen\">\r\n    <div class=\"row screen-items\"></div>\r\n    <div class=\"row screen-loader\">x</div>\r\n</div>";
+},"useData":true});
 })();

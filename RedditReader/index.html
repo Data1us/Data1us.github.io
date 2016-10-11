@@ -378,15 +378,15 @@
 		});
 		
 		
-		var doLoad = $("#loaderrrr");
-		setInterval(function(e){
-			if (doLoad.isOnScreen() && !loading) {
-				loading=true;				
-				var hash = getHash().replace("#","");
-				var lastItem = $(".reddit-item").last().find("input").val();
-				performSubreditSearch(hash, lastItem, false, false);
-			}
-		},50);
+		//var doLoad = $("#loaderrrr");
+		//setInterval(function(e){
+		//	if (doLoad.isOnScreen() && !loading) {
+		//		loading=true;				
+		//		var hash = getHash().replace("#","");
+		//		var lastItem = $(".reddit-item").last().find("input").val();
+				//performSubreditSearch(hash, lastItem, false, false);
+		//	}
+		//},50);
 		
 		//render the current reddit.
 		var hash = getHash();
