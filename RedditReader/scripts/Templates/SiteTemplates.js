@@ -12,7 +12,7 @@ templates['ImgurItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(con
     + "\">\r\n</div>";
 },"useData":true});
 templates['ImgurScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    return "﻿<div class=\"imgur-screen\">\r\n    <div class=\"row screen-items\">\r\n       \r\n    </div>\r\n</div>";
+    return "﻿<div class=\"imgur-screen\">\r\n    <div class=\"row screen-items\">\r\n       \r\n    </div>\r\n    <div class=\"row screen-loader\">\r\n        <div class=\"col-xs-12 loader-checker\">x</div>\r\n        <div class=\"col-xs-12 loader-icon text-center\">\r\n            <img src=\"./Content/loading.gif\" class=\"img-circle\" />\r\n        </div>\r\n    </div>\r\n</div>";
 },"useData":true});
 templates['LeftMenuItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;

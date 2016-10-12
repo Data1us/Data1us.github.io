@@ -3,8 +3,8 @@
     if (typeof (window.page) == "undefined") window.page = {};
     page.ImgurDataProvider = (function (options) {
         var self = this;
-        self.getGallery = function (section, sort, callback) {
-            var rel = "http://api.imgur.com/3/gallery/"+section+"/"+sort+"/0.json";            
+        self.getGallery = function (page, section, sort, callback) {
+            var rel = "http://api.imgur.com/3/gallery/"+section+"/"+sort+"/"+page;            
             $.getJSON(rel, function (json) {
                 callback(json);
             });
