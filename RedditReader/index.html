@@ -149,6 +149,7 @@
       <script src="./scripts/RedditImageView.js"></script>
       <script src="./scripts/RedditDataProvider.js"></script>
       <script src="./scripts/RedditTextScreen.js"></script>
+      <script src="./scripts/RedditImageScreen.js"></script>
 
 	
     
@@ -173,7 +174,8 @@
 
         //all our screens and left menu items.
         var screens = {
-            "RedditTextScreen": page.RedditTextScreen
+            "RedditTextScreen": page.RedditTextScreen,
+            "RedditImageScreen": page.RedditImageScreen
         };
         var readersNew = [
             { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },            
@@ -184,7 +186,7 @@
             { Name: "Freediving", Location: "freediving", Screen: "RedditTextScreen", type: "new" },
             { Name: "Surfing", Location: "surfing", Screen: "RedditTextScreen", type: "new" },
             { Name: "Stand Up Paddle", Location: "sup", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Pics", Location: "pics", Screen: "RedditTextScreen", type: "hot" },
+            { Name: "Pics", Location: "pics", Screen: "RedditImageScreen", type: "hot" },
             { Name: "Hockey", Location: "fieldhockey", Screen: "RedditTextScreen", type: "new" },
             { Name: "Freeboard", Location: "freebord", Screen: "RedditTextScreen", type: "new" },
             { Name: "Wakeboarding", Location: "wake", Screen: "RedditTextScreen", type: "new" },
@@ -200,13 +202,16 @@
 
         //event to attach the menu items.
         $(".left-menu-item-new").click(function (e) {
-            $(".navbar-header button").click(); // this should hide the menu in mobile mode, a bit hacky i know
+            //$(".navbar-header button").click(); // this should hide the menu in mobile mode, a bit hacky i know
             e.preventDefault();
             var item = $(this);
             var screen = item.attr("data-screen");
             var name = item.attr("data-name");
             var location = item.attr("data-location");
             var type = item.attr("data-type");
+
+            $(".left-menu-item-new").addClass("active");
+            item.removeClass("active");
 
             //if we have a screen running lets clear it.
             if (typeof (currentScreen) !== "undefined") currentScreen.dispose();

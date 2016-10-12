@@ -7,19 +7,19 @@
 		  #monies {color:white; margin-left:15px; margin-top:15px }
 		  
 		  .display-none{display:none !important;}
-		  .img-thumbnail { padding:10px; margin:10px; position:relative;}
+		  /*.img-thumbnail { padding:10px; margin:10px; position:relative;}*/
 		  
-		  .img-thumbnail .reddit-item-comments {
+		  /*.img-thumbnail .reddit-item-comments {
 			position:absolute; 
 			background-color:transparent;
 			top:10px; right:10px;
 			text-align:center;
-		  }
+		  }*/
 		  
 		  #display-mode {margin:15px;}
 		  	  
 		  
-		  #image-section .img-thumbnail{
+		  /*#image-section .img-thumbnail{
 			border:none;
 			padding:0px;
 			margin: 2px;
@@ -27,24 +27,28 @@
 		  }
 		  
 			.blue {color:blue;}
-		
+		*/
 		@media screen and (min-width: 1000px) {
-			#image-section img { width:250px; height:250px;}
+			.img-gallery { width:300px; height:200px;}
 		}
 		
 		@media (min-width: 992px) {
-			#image-section img { width:200px; height:200px;}
+			.img-gallery { width:300px; height:200px;}
 		}
 		
 		@media (min-width: 400px) {
-			#image-section img { width:150px; height:150px;}
+			.img-gallery { width:300px; height:200px;}
 		}
 		
 		@media (min-width: 1200px) {
-			#image-section img { width:200px; height:200px;}
+			.img-gallery { width:300px; height:200px;}
 		}
 		
 		/* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+
+
+        
+        .custom-img-padding { padding:5px !important;}
 .wordwrap { 
    white-space: pre-wrap;      /* CSS3 */   
    white-space: -moz-pre-wrap; /* Firefox */    
@@ -54,4 +58,4 @@
 }
 			
 /*REDIT TEXT SCREEN SPECIFIC STYLES*/
-.reddit-text-screen .loader-checker { visibility: hidden; }
+.reddit-text-screen .loader-checker, .reddit-image-screen .loader-checker { visibility: hidden; }
