@@ -102,6 +102,8 @@
     <None Include="RedditReader\scripts\Templates\LeftMenuItemNew.handlebars" />
     <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
+    <None Include="RedditReader\scripts\Templates\ImgurScreen.handlebars" />
+    <None Include="RedditReader\scripts\Templates\ImgurItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImageScreen.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditTextScreen.handlebars" />
