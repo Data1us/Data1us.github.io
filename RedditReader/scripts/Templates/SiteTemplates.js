@@ -37,7 +37,7 @@ templates['RedditImage'] = template({"compiler":[7,">= 4.0.0"],"main":function(c
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
     + "\" class=\"reddit-image-link\" data-gallery>\r\n        <img class=\"img-gallery img-responsive\" src=\""
     + alias4(((helper = (helper = helpers.thumbnail || (depth0 != null ? depth0.thumbnail : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"thumbnail","hash":{},"data":data}) : helper)))
-    + "\" alt=\"Banana\">\r\n    </a>\r\n</div>";
+    + "\" alt=\"Banana\">\r\n    </a>    \r\n</div>";
 },"useData":true});
 templates['RedditImageScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "﻿<div class=\"reddit-image-screen\">\r\n    <div class=\"row screen-items\">\r\n        <div id=\"image-section\">\r\n            <div id=\"links\"></div>            \r\n        </div>\r\n    </div>\r\n    <div class=\"row screen-loader\">\r\n        <div class=\"col-xs-12 loader-checker\">x</div>\r\n        <div class=\"col-xs-12 loader-icon text-center\">\r\n            <img src=\"./Content/loading.gif\" class=\"img-circle\" />\r\n        </div>\r\n    </div>\r\n</div>";

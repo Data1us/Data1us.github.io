@@ -103,7 +103,12 @@
     <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditItem.handlebars" />
+    <None Include="RedditReader\scripts\Templates\RedditImageScreen.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditTextScreen.handlebars" />
+    <None Include="RedditReader\styles\bootstrap-theme.css.map" />
+    <None Include="RedditReader\styles\bootstrap-theme.min.css.map" />
+    <None Include="RedditReader\styles\bootstrap.css.map" />
+    <None Include="RedditReader\styles\bootstrap.min.css.map" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="css\bootstrap-rtl.css" />
@@ -143,16 +148,20 @@
     <Content Include="RedditReader\favicon.ico" />
     <Content Include="RedditReader\index.html" />
     <Content Include="RedditReader\scripts\blueimp-gallery.js" />
+    <Content Include="RedditReader\scripts\bootstrap.js" />
     <Content Include="RedditReader\scripts\bootstrap.min.js" />
     <Content Include="RedditReader\scripts\fitonscreen.js" />
     <Content Include="RedditReader\scripts\handlebars-v4.0.5.js" />
     <Content Include="RedditReader\scripts\handlebars.min.js" />
+    <Content Include="RedditReader\scripts\ImgurDataProvider.js" />
     <Content Include="RedditReader\scripts\jquery-1.11.0.min.js" />
     <Content Include="RedditReader\scripts\jquery.blueimp-gallery.min.js" />
     <Content Include="RedditReader\scripts\me.jpg" />
     <Content Include="RedditReader\scripts\metisMenu.min.js" />
+    <Content Include="RedditReader\scripts\ImgurScreen.js" />
     <Content Include="RedditReader\scripts\RedditImageView.js" />
     <Content Include="RedditReader\scripts\RedditDataProvider.js" />
+    <Content Include="RedditReader\scripts\RedditImageScreen.js" />
     <Content Include="RedditReader\scripts\RedditTextScreen.js" />
     <Content Include="RedditReader\scripts\sb-admin-2.js" />
     <Content Include="RedditReader\scripts\sitemain.js" />
@@ -161,6 +170,9 @@
     <Content Include="RedditReader\scripts\underscore-min.js" />
     <Content Include="RedditReader\styles\blueimp-gallery.css" />
     <Content Include="RedditReader\styles\blueimp-gallery.min.css" />
+    <Content Include="RedditReader\styles\bootstrap-theme.css" />
+    <Content Include="RedditReader\styles\bootstrap-theme.min.css" />
+    <Content Include="RedditReader\styles\bootstrap.css" />
     <Content Include="RedditReader\styles\bootstrap.min.css" />
     <Content Include="RedditReader\styles\font-awesome.min.css" />
     <Content Include="RedditReader\styles\metisMenu.min.css" />
