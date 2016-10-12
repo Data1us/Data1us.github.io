@@ -1,5 +1,19 @@
 (function() {
   var template = Handlebars.template, templates = page.templates = page.templates || {};
+templates['ImgurItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+
+  return "﻿<div class=\"custom-img-padding col-xl-1 col-lg-2 col-md-3 col-xs-6 thumb\">    \r\n   <!-- <span>"
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "</span>-->\r\n    <img class=\"img-gallery img-responsive\" src=\""
+    + alias4(((helper = (helper = helpers.thumb || (depth0 != null ? depth0.thumb : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"thumb","hash":{},"data":data}) : helper)))
+    + "\" alt=\"Banana\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\""
+    + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
+    + "\">\r\n</div>";
+},"useData":true});
+templates['ImgurScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    return "﻿<div class=\"imgur-screen\">\r\n    <div class=\"row screen-items\">\r\n       \r\n    </div>\r\n</div>";
+},"useData":true});
 templates['LeftMenuItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
