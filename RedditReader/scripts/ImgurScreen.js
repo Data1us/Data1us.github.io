@@ -43,7 +43,8 @@
         };
 
         self.dispose = function () {
-            self.el.target.html("");            
+            clearInterval(loadInterval);
+            self.el.target.html("");
         };
 
 
@@ -53,21 +54,16 @@
             self.priv.loader.show();            
             dataProvider.getGallery(thePage, section, sort, function (json) {
                 
-                //possible idea.
-                //http://stackoverflow.com/questions/8566667/split-javascript-array-in-chunks-using-underscore-js
-                //put in datastore.
-                //ok they give me a whole bunch of data on page 1.  And i cant get any more after that.  Im going to have to cache it or something.
-                //or find some sort of limit.  Atm im just going to take the first 50 then stop loading.
-                if (thePage == 1) {
-                    json.data = _.first(json.data, 50);
+                //we got no results.  stop doing anything.
+                if (_.isUndefined(json) || _.isUndefined(json.data) || json.data.length === 0) {
                     clearInterval(loadInterval);
                     loading = true;
                     self.priv.loader.hide();
+                    return;
                 }
 
                 thePage = thePage + 1;
-
-                _.each(json.data, function (item) {
+                _.each(json.data, function (item) {                    
                     var thumb = (item.is_album)
                         ? "//i.imgur.com/" + item.cover + "b.jpg"
                         : "//i.imgur.com/" + item.id + "b.jpg"
