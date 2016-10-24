@@ -44,24 +44,28 @@
 
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse" aria-expanded="false" style="height: 1px;">
-                    <ul class="nav in" id="side-menu">
-                        <!--<li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search..." id="SubreditSearch">
+                    <ul class="nav in the-search" id="side-menu" >
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form ">
+                                <input type="text" class="form-control search-text" placeholder="Search...">
                                 <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" id="SubreditSearchBtn">
+                                <a class="btn btn-default" type="button" id="SubreditSearchBtn">
                                     <i class="fa fa-search"></i>
-                                </button>
+                                </a>
                             </span>
                             </div>
                             
                         </li>  
 						<li>
-							<div id="display-mode" class="btn-group">
-								<a class="btn btn-default active" rel="text" aria-label="Left Align">Text</a>
-								<a class="btn btn-default" rel="image" aria-label="Center Align">Image</a>					
-							</div>			
-						</li>-->
+                            <div class="btn-group type-buttons" data-toggle="buttons">
+                                <label class="btn btn-default active search-type" data-type="text">
+                                    <input type="radio" autocomplete="off" checked>Text
+                                </label>
+                                <label class="btn btn-default search-type" data-type="image">
+                                    <input type="radio" autocomplete="off">Image
+                                </label>                             
+                            </div>		
+						</li>
 						
                     </ul>
                 </div>
@@ -153,6 +157,7 @@
 
       <script src="./scripts/ImgurDataProvider.js"></script>
       <script src="./scripts/ImgurScreen.js"></script>
+      <script src="./scripts/SearchView.js"></script>
 
 
 	
@@ -205,7 +210,7 @@
         _.each(readersNew, function (reader) {
             leftMenu.append(page.templates.LeftMenuItemNew(reader).replace(/\ufeff/, ''));
         });
-
+        
         //event to attach the menu items.
         $(".left-menu-item-new").click(function (e) {
             //$(".navbar-header button").click(); // this should hide the menu in mobile mode, a bit hacky i know
@@ -247,6 +252,10 @@
 		        $(".left-menu-item-new[data-location=" + newViews[0].Location + "]").click();
 		    }
 		}	
+
+		//set up the search view
+		var searchView = new page.SearchView({ target: $(".the-search"), screens: screens, currentScreen: currentScreen });
+		searchView.render();
 
     </script>        
     
