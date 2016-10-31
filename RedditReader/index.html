@@ -143,6 +143,7 @@
     <script src="./scripts/handlebars-v4.0.5.js"></script>
     <script src="./scripts/underscore-min.js"></script>
     <script src="./scripts/bootstrap.min.js"></script>
+    <script src="./scripts/bootbox.min.js"></script>
 	<script src="./scripts/jquery.blueimp-gallery.min.js"></script>
 	<script src="./scripts/metisMenu.min.js"></script>
 	<script src="./scripts/sb-admin-2.js"></script>
@@ -154,6 +155,7 @@
       <script src="./scripts/RedditDataProvider.js"></script>
       <script src="./scripts/RedditTextScreen.js"></script>
       <script src="./scripts/RedditImageScreen.js"></script>
+      <script src="./scripts/IframeScreen.js"></script>
 
       <script src="./scripts/ImgurDataProvider.js"></script>
       <script src="./scripts/ImgurScreen.js"></script>
@@ -185,25 +187,42 @@
         var screens = {
             "RedditTextScreen": page.RedditTextScreen,
             "RedditImageScreen": page.RedditImageScreen,
-            "ImgurScreen": page.ImgurScreen
+            "ImgurScreen": page.ImgurScreen,
+            "IframeScreen": page.IframeScreen
         };
         var readersNew = [
-            { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },            
-            { Name: "UT4", Location: "unrealtournament", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Warframe", Location: "warframe", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Protoss", Location: "allthingsprotoss", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Snowboarding", Location: "snowboarding", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Freediving", Location: "freediving", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Surfing", Location: "surfing", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Stand Up Paddle", Location: "sup", Screen: "RedditTextScreen", type: "new" },
+          //  { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },            
+          //  { Name: "UT4", Location: "unrealtournament", Screen: "RedditTextScreen", type: "new" },
+         //   { Name: "Warframe", Location: "warframe", Screen: "RedditTextScreen", type: "new" },
+           // { Name: "Protoss", Location: "allthingsprotoss", Screen: "RedditTextScreen", type: "new" },
             { Name: "Pics", Location: "pics", Screen: "RedditImageScreen", type: "hot" },
-            { Name: "Hockey", Location: "fieldhockey", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Freeboard", Location: "freebord", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Wakeboarding", Location: "wake", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Kiteboarding", Location: "Kiteboarding", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Longboarding", Location: "longboarding", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Sprinting", Location: "sprinting", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Imgur", Location: "hot", type:"viral", Screen:"ImgurScreen"}
+            { Name: "Imgur", Location: "hot", type: "viral", Screen: "ImgurScreen" },
+            { Name: ".Net - Hanselman", Location: "hanselman", Screen: "IframeScreen", type: "http://www.hanselman.com/blog/" },
+            { Name: ".Net - Ode to Code", Location: "odetocode", Screen: "IframeScreen", type: "http://odetocode.com/" },
+            { Name: ".Net - Iris Classon", Location: "irisclasson", Screen: "IframeScreen", type: "http://irisclasson.com/" },
+            { Name: ".Net - David Debbo", Location: "daviddebbo", Screen: "IframeScreen", type: "http://blog.davidebbo.com/" },
+            { Name: ".Net - Rick Strahl", Location: "rickstrahl", Screen: "IframeScreen", type: "https://weblog.west-wind.com/" },
+            { Name: ".Net - Jm Stall", Location: "jmstall", Screen: "IframeScreen", type: "https://blogs.msdn.microsoft.com/jmstall/" },
+            { Name: ".Net - David Fowl", Location: "davidfowl", Screen: "IframeScreen", type: "http://davidfowl.com/" },
+            { Name: "Sport - Snowboarding", Location: "snowboarding", Screen: "RedditTextScreen", type: "new" },           
+            { Name: "Sport - Surfing", Location: "surfing", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Sport - Stand Up Paddle", Location: "sup", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Sport - Hockey", Location: "fieldhockey", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Games - Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },                        
+            { Name: "Games - Warframe", Location: "warframe", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Games - Monster Hunter", Location: "MonsterHunter", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Ut4 - Reddit", Location: "unrealtournament", Screen: "RedditTextScreen", type: "new" },
+            { Name: "Ut4 - Blog", Location: "ut4blog", Screen: "IframeScreen", type: "http://www.epicgames.com/unrealtournament/blog" },
+            { Name: "Ut4 - Frag Center", Location: "ut4fragcenter", Screen: "IframeScreen", type: "http://www.epicgames.com/unrealtournament/fragcenter" },
+            { Name: "Ut4 - UTAUNZ", Location: "ut4fragcenter", Screen: "IframeScreen", type: "http://www.utaunz.com" }            
+
+            // { Name: "Freediving", Location: "freediving", Screen: "RedditTextScreen", type: "new" },
+            //{ Name: "Freeboard", Location: "freebord", Screen: "RedditTextScreen", type: "new" },
+            //{ Name: "Wakeboarding", Location: "wake", Screen: "RedditTextScreen", type: "new" },
+            //{ Name: "Kiteboarding", Location: "Kiteboarding", Screen: "RedditTextScreen", type: "new" },
+            //{ Name: "Longboarding", Location: "longboarding", Screen: "RedditTextScreen", type: "new" },
+           // { Name: "Sprinting", Location: "sprinting", Screen: "RedditTextScreen", type: "new" },
+           // { Name: "Unreal - Blog", Location: "UnrealBlog", type: "https://www.epicgames.com/unrealtournament/blog", Screen: "IframeScreen" }            
         ];
 
         //lets render out all the menu items.

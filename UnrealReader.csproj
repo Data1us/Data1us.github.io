@@ -99,6 +99,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="RedditReader\scripts\Templates\ImgurEmbedView.handlebars" />
     <None Include="RedditReader\scripts\Templates\LeftMenuItemNew.handlebars" />
     <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
@@ -150,17 +151,20 @@
     <Content Include="RedditReader\favicon.ico" />
     <Content Include="RedditReader\index.html" />
     <Content Include="RedditReader\scripts\blueimp-gallery.js" />
+    <Content Include="RedditReader\scripts\bootbox.min.js" />
     <Content Include="RedditReader\scripts\bootstrap.js" />
     <Content Include="RedditReader\scripts\bootstrap.min.js" />
     <Content Include="RedditReader\scripts\fitonscreen.js" />
     <Content Include="RedditReader\scripts\handlebars-v4.0.5.js" />
     <Content Include="RedditReader\scripts\handlebars.min.js" />
+    <Content Include="RedditReader\scripts\IframeScreen.js" />
     <Content Include="RedditReader\scripts\ImgurDataProvider.js" />
     <Content Include="RedditReader\scripts\jquery-1.11.0.min.js" />
     <Content Include="RedditReader\scripts\jquery.blueimp-gallery.min.js" />
     <Content Include="RedditReader\scripts\me.jpg" />
     <Content Include="RedditReader\scripts\metisMenu.min.js" />
     <Content Include="RedditReader\scripts\ImgurScreen.js" />
+    <Content Include="RedditReader\scripts\SearchView.js" />
     <Content Include="RedditReader\scripts\RedditImageView.js" />
     <Content Include="RedditReader\scripts\RedditDataProvider.js" />
     <Content Include="RedditReader\scripts\RedditImageScreen.js" />

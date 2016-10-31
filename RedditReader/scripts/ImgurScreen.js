@@ -69,15 +69,39 @@
                         : "//i.imgur.com/" + item.id + "b.jpg"
                     var model = {
                         title: item.title,
-                        thumb: thumb
+                        thumb: thumb,
+                        link: typeof (item.gifv) !== "undefined" && item.gifv.length > 0 && !item.is_album ? item.gifv : item.link,
+                        gifv: typeof (item.gifv) !== "undefined" && item.gifv.length > 0 && !item.is_album ? true : false
                     }
 
+                    if (model.gifv) return;
+
                     //TODO: Make a view....
+                    var markup = page.templates.ImgurItem(model);
+
                     target.find(".screen-items").append(page.templates.ImgurItem(model));
                     self.el.target.find('[data-toggle="tooltip"]').tooltip();
 
                     loading = false;
                     self.priv.loader.hide();
+                });
+
+                self.el.target.find("img").unbind("click").click(function (e) {
+                    e.preventDefault();
+                    var item = $(this);
+                    var link = item.attr("data-link");
+                    var title = item.attr("title");
+                    var fallbackTitle = item.attr("data-original-title");
+                    if (title.length == 0) title = fallbackTitle;
+                    var gifv = item.attr("data-gifv");
+                    var message = (gifv === "true") 
+                        ? '<iframe src="' + link + '" style="width:800px; height:800px;" ></iframe>'
+                        : page.templates.ImgurEmbedView({ link: link });
+                    var dialog = bootbox.dialog({
+                        title: title,
+                        message: message,
+                        onEscape: function () { }
+                    });
                 });
             });
         };

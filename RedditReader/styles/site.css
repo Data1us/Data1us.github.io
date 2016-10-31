@@ -59,3 +59,8 @@
 			
 /*REDIT TEXT SCREEN SPECIFIC STYLES*/
 .reddit-text-screen .loader-checker, .reddit-image-screen .loader-checker { visibility: hidden; }
+.hidden {display:none;}
+
+.iframe-screen iframe { width:100%; height:870px; border:0px;}
+
+.nav>li>a { padding: 5px 15px; }
