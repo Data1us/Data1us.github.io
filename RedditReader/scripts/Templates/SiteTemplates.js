@@ -3,9 +3,9 @@
 templates['ImgurEmbedView'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper;
 
-  return "﻿<iframe allowfullscreen=\"true\" \r\n        mozallowfullscreen=\"true\" \r\n        webkitallowfullscreen=\"true\" \r\n        class=\"imgur-embed-iframe-pub imgur-embed-iframe-pub-HRaPmbj-true-540\" \r\n        scrolling=\"no\" \r\n        src=\""
+  return "﻿<iframe allowfullscreen=\"true\" \r\n		mozallowfullscreen=\"true\" \r\n		webkitallowfullscreen=\"true\" \r\n		class=\"imgur-embed-iframe-pub \r\n		imgur-embed-iframe-pub-HRaPmbj-true-540\" \r\n		scrolling=\"no\" \r\n		src=\""
     + container.escapeExpression(((helper = (helper = helpers.link || (depth0 != null ? depth0.link : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"link","hash":{},"data":data}) : helper)))
-    + "/embed?ref=https%3A%2F%2Fhelp.imgur.com%2Fhc%2Fen-us%2Farticles%2F211273743-Embed-Unit&amp;w=540\" \r\n        id=\"imgur-embed-iframe-pub-HRaPmbj\" \r\n        style=\"height: 800px; width: 100%; margin: 10px 0px; padding: 0px;\">\r\n</iframe>";
+    + "/embed?ref=https%3A%2F%2Fhelp.imgur.com%2Fhc%2Fen-us%2Farticles%2F211273743-Embed-Unit&amp;w=540\" \r\n		id=\"imgur-embed-iframe-pub-HRaPmbj\" \r\n		style=\"height: 500px; width: 540px; margin: 10px 0px; padding: 0px;\">\r\n</iframe>";
 },"useData":true});
 templates['ImgurItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
