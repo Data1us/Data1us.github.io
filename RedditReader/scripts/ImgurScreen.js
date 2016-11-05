@@ -71,7 +71,8 @@
                         title: item.title,
                         thumb: thumb,
                         link: typeof (item.gifv) !== "undefined" && item.gifv.length > 0 && !item.is_album ? item.gifv : item.link,
-                        gifv: typeof (item.gifv) !== "undefined" && item.gifv.length > 0 && !item.is_album ? true : false
+                        gifv: typeof (item.gifv) !== "undefined" && item.gifv.length > 0 && !item.is_album ? true : false,
+						id:item.id
                     }
 
                     if (model.gifv) return;
@@ -90,13 +91,14 @@
                     e.preventDefault();
                     var item = $(this);
                     var link = item.attr("data-link");
+					var id = item.attr("data-id");
                     var title = item.attr("title");
                     var fallbackTitle = item.attr("data-original-title");
                     if (title.length == 0) title = fallbackTitle;
-                    var gifv = item.attr("data-gifv");
+                    var gifv = item.attr("data-gifv");					
                     var message = (gifv === "true") 
                         ? '<iframe src="' + link + '" style="width:800px; height:800px;" ></iframe>'
-                        : page.templates.ImgurEmbedView({ link: link });
+                        : page.templates.ImgurEmbedView({ id: id, link: link.replace("http", "https") });
                     var dialog = bootbox.dialog({
                         title: title,
                         message: message,

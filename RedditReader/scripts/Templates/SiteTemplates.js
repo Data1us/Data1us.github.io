@@ -1,11 +1,15 @@
 (function() {
   var template = Handlebars.template, templates = page.templates = page.templates || {};
 templates['ImgurEmbedView'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
-    var helper;
+    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
-  return "﻿<iframe allowfullscreen=\"true\" \r\n		mozallowfullscreen=\"true\" \r\n		webkitallowfullscreen=\"true\" \r\n		class=\"imgur-embed-iframe-pub \r\n		imgur-embed-iframe-pub-HRaPmbj-true-540\" \r\n		scrolling=\"no\" \r\n		src=\""
-    + container.escapeExpression(((helper = (helper = helpers.link || (depth0 != null ? depth0.link : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"link","hash":{},"data":data}) : helper)))
-    + "/embed?ref=https%3A%2F%2Fhelp.imgur.com%2Fhc%2Fen-us%2Farticles%2F211273743-Embed-Unit&amp;w=540\" \r\n		id=\"imgur-embed-iframe-pub-HRaPmbj\" \r\n		style=\"height: 500px; width: 540px; margin: 10px 0px; padding: 0px;\">\r\n</iframe>";
+  return "﻿<iframe allowfullscreen=\"true\" \r\nmozallowfullscreen=\"true\" \r\nwebkitallowfullscreen=\"true\" \r\nclass=\"imgur-embed-iframe-pub imgur-embed-iframe-pub-a-"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "-true-518\" \r\nscrolling=\"no\" \r\nsrc=\""
+    + alias4(((helper = (helper = helpers.link || (depth0 != null ? depth0.link : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"link","hash":{},"data":data}) : helper)))
+    + "/embed?pub=true&amp;ref=https%3A%2F%2Fblog.imgur.com%2F2015%2F04%2F07%2Fembed-your-post-anywhere%2F&amp;w=518\" \r\nid=\"imgur-embed-iframe-pub-a-"
+    + alias4(((helper = (helper = helpers.id || (depth0 != null ? depth0.id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id","hash":{},"data":data}) : helper)))
+    + "\" \r\nstyle=\"height: 500px; width: 518px; margin: 10px 0px; padding: 0px;\">\r\n</iframe>";
 },"useData":true});
 templates['ImgurItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
@@ -20,7 +24,7 @@ templates['ImgurItem'] = template({"compiler":[7,">= 4.0.0"],"main":function(con
     + alias4(((helper = (helper = helpers.link || (depth0 != null ? depth0.link : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"link","hash":{},"data":data}) : helper)))
     + "\" data-gifv=\""
     + alias4(((helper = (helper = helpers.gifv || (depth0 != null ? depth0.gifv : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"gifv","hash":{},"data":data}) : helper)))
-    + "\">\r\n</div>";
+    + ", data-id=\"id\">\r\n</div>";
 },"useData":true});
 templates['ImgurScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "﻿<div class=\"imgur-screen\">\r\n    <div class=\"row screen-items\">\r\n       \r\n    </div>\r\n    <div class=\"row screen-loader\">\r\n        <div class=\"col-xs-12 loader-checker\">x</div>\r\n        <div class=\"col-xs-12 loader-icon text-center\">\r\n            <img src=\"./Content/loading.gif\" class=\"img-circle\" />\r\n        </div>\r\n    </div>\r\n</div>";
