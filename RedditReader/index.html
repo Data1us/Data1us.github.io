@@ -160,6 +160,7 @@
       <script src="./scripts/ImgurDataProvider.js"></script>
       <script src="./scripts/ImgurScreen.js"></script>
       <script src="./scripts/SearchView.js"></script>
+	  <script src="./scripts/RssScreen.js"></script>
 
 
 	
@@ -188,7 +189,8 @@
             "RedditTextScreen": page.RedditTextScreen,
             "RedditImageScreen": page.RedditImageScreen,
             "ImgurScreen": page.ImgurScreen,
-            "IframeScreen": page.IframeScreen
+            "IframeScreen": page.IframeScreen,
+			"RssScreen": page.RssScreen
         };
         var readersNew = [
           //  { Name: "Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },            
@@ -206,14 +208,22 @@
             { Name: ".Net - David Fowl", Location: "davidfowl", Screen: "IframeScreen", type: "http://davidfowl.com/" },
             { Name: "Sport - Snowboarding", Location: "snowboarding", Screen: "RedditTextScreen", type: "new" },           
             { Name: "Sport - Surfing", Location: "surfing", Screen: "RedditTextScreen", type: "new" },
+			{ Name: "Sport - Coastalwatch", Location: "coastalwatch", Screen: "IframeScreen", type: "http://www.coastalwatch.com/surf-forecasts/qld/gold-coast" },
+			{ Name: "Sport - CW - Cam", Location: "cwcurrumbincam", Screen: "IframeScreen", type: "http://www.coastalwatch.com/surf-cams-surf-reports/qld/currumbin" },
             { Name: "Sport - Stand Up Paddle", Location: "sup", Screen: "RedditTextScreen", type: "new" },
             { Name: "Sport - Hockey", Location: "fieldhockey", Screen: "RedditTextScreen", type: "new" },
+			{ Name: "Sport - FIH", Location: "fih", Screen:"RssScreen", type:"http://www.fih.ch/news-feed"},	
+			{ Name: "Sport - Hockey Aus", Location: "hockeyaus", Screen: "IframeScreen", type: "http://www.hockey.org.au/News" },
+			{ Name: "Sport - Sprinting", Location: "sprinting", Screen: "RedditTextScreen", type: "new" },
+			{ Name: "Sport - Freediving", Location: "freediving", Screen: "RedditTextScreen", type: "new" },
+			{ Name: "Sport - Kitesurfing", Location: "kitesurfing", Screen: "RedditTextScreen", type: "new" },
+			{ Name: "Sport - longboarding", Location: "longboarding", Screen: "RedditTextScreen", type: "new" },
             { Name: "Games - Overwatch", Location: "overwatch", Screen: "RedditTextScreen", type: "new" },                        
             { Name: "Games - Warframe", Location: "warframe", Screen: "RedditTextScreen", type: "new" },
             { Name: "Games - Monster Hunter", Location: "MonsterHunter", Screen: "RedditTextScreen", type: "new" },
+			{ Name: "Games - Dayz", Location: "dayz", Screen: "RedditTextScreen", type: "new" },
             { Name: "Ut4 - Reddit", Location: "unrealtournament", Screen: "RedditTextScreen", type: "new" },
-            { Name: "Ut4 - Blog", Location: "ut4blog", Screen: "IframeScreen", type: "http://www.epicgames.com/unrealtournament/blog" },
-            { Name: "Ut4 - Frag Center", Location: "ut4fragcenter", Screen: "IframeScreen", type: "http://www.epicgames.com/unrealtournament/fragcenter" },
+            { Name: "Ut4 - Rss Feed", Location: "ut4feed", Screen:"RssScreen", type:"https://www.epicgames.com/unrealtournament/blog/feed/"},
             { Name: "Ut4 - UTAUNZ", Location: "ut4fragcenter", Screen: "IframeScreen", type: "http://www.utaunz.com" }            
 
             // { Name: "Freediving", Location: "freediving", Screen: "RedditTextScreen", type: "new" },

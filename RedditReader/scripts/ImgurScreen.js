@@ -102,6 +102,7 @@
                     var dialog = bootbox.dialog({
                         title: title,
                         message: message,
+						size:"large",
                         onEscape: function () { }
                     });
                 });
