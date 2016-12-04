@@ -64,3 +64,10 @@
 .iframe-screen iframe { width:100%; height:870px; border:0px;}
 
 .nav>li>a { padding: 5px 15px; }
+
+.navbar-inverse .navbar-brand .orange{ color: orange;}
+.sidebar .nav>li>a { padding: 1px 15px;}
+.sidebar ul li a { background-color:white;}
+.sidebar ul li a.active {background-color:white;}
+.sidebar ul li { border-bottom: 0px solid white;}
+body {background-color:white;}
