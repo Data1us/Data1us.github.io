@@ -35,7 +35,8 @@
                     author: item.data.author,
                     content: item.data.selftext || item.data.selftext_html,
                     permalink: item.data.permalink,
-                    name: item.data.name
+                    name: item.data.name,
+                    subreddit: item.data.subreddit
                 };
                 if (!_.isUndefined(item.data.num_comments)) itemModel.commentCount = item.data.num_comments;
                 if (!_.isUndefined(item.data.thumbnail) && item.data.thumbnail != "" && item.data.thumbnail != "self" && item.data.thumbnail != "default") itemModel.thumbnail = getThumbnail(item.data.thumbnail);
@@ -44,8 +45,35 @@
                     itemModel.link = item.data.url;
                     itemModel.linkShort = (item.data.url.length > 50) ? item.data.url.substring(0, 50) + "...." : item.data.url;
                 }
-                                
-                self.el.target.append(self.el.template(itemModel).replace(/\ufeff/, ''));
+                if ((typeof (item.data.media) != "undefined" && item.data.media !== null) && typeof (item.data.media.oembed) != "undefined") {
+                    itemModel.hasEmbed = true;
+                    itemModel.mediaType = item.data.media.type;
+                    itemModel.embedMarkup = item.data.media.oembed.html;
+                }
+
+                if (!_.isUndefined(item.data.post_hint) && item.data.post_hint == "image") {
+                    itemModel.hasEmbed = true;
+                    itemModel.mediaType = item.data.url;
+                    itemModel.embedMarkup = $('<div/>').text('<img src="' + item.data.url + '" style="max-width:80%; max-height:600px;"/>').html();
+                }
+
+                
+                var markup = $(self.el.template(itemModel).replace(/\ufeff/, ''));
+                self.el.target.append(markup);
+                markup.find(".show-media").click(function (e) {                    
+                    var embedContainer = $(this).closest(".embed-section");
+                    var embedMarkup = embedContainer.find(".embed-src").attr("data-src");
+                    var htmlLoc = embedContainer.find(".embed-container");
+                    if (htmlLoc.html().length > 0) {                        
+                        htmlLoc.find("iframe, img").hide();
+                        setTimeout(function () {
+                            htmlLoc.html("");
+                        }, 2000);
+                    }
+                    else {
+                        htmlLoc.html($('<div/>').html(embedMarkup).text());
+                    }                    
+                });
                               
             });
 

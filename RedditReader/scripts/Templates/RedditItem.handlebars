@@ -7,9 +7,8 @@
     </div>
 
     <div class="col-sm-12 col-md-9 col-lg-10">
-
-        <h3 class="reddit-item-heading">
-            {{title}}</h4>
+            <span class="btn btn-warning btn-xs" style="float:right;">{{subreddit}}</span>
+            <h3 class="reddit-item-heading">{{title}}</h4>
             <input type="hidden" value="{{name}}" />
 
             <div class="redit-item-content wordwrap">{{content}}</div>
@@ -22,6 +21,13 @@
                 <div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
             </div>
 
+            {{#if hasEmbed}}
+            <div class="embed-section">
+                <input class="embed-src" type="hidden" data-src="{{embedMarkup}}" />
+                <a class="btn btn-sm btn-primary show-media">Toggle {{mediaType}}</a>
+                <div class="embed-container"></div>
+            </div>
+            {{/if}}
     </div>
 
 </div>
