@@ -78,6 +78,12 @@ templates['RedditItem'] = template({"1":function(container,depth0,helpers,partia
     + container.escapeExpression(((helper = (helper = helpers.thumbnail || (depth0 != null ? depth0.thumbnail : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"thumbnail","hash":{},"data":data}) : helper)))
     + "\" /></div>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
+    var helper;
+
+  return "            <a class=\"btn btn-xs btn-info show-media\" style=\"margin-right:5px\">Toggle "
+    + container.escapeExpression(((helper = (helper = helpers.mediaType || (depth0 != null ? depth0.mediaType : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"mediaType","hash":{},"data":data}) : helper)))
+    + "</a>\r\n";
+},"5":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "                <div class=\"reddit-item-link\"><a target=\"_blank\" href=\""
@@ -85,38 +91,38 @@ templates['RedditItem'] = template({"1":function(container,depth0,helpers,partia
     + "\">"
     + alias4(((helper = (helper = helpers.linkShort || (depth0 != null ? depth0.linkShort : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"linkShort","hash":{},"data":data}) : helper)))
     + "</a></div>\r\n";
-},"5":function(container,depth0,helpers,partials,data) {
-    var helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
+},"7":function(container,depth0,helpers,partials,data) {
+    var helper;
 
-  return "            <div class=\"embed-section\">\r\n                <input class=\"embed-src\" type=\"hidden\" data-src=\""
-    + alias4(((helper = (helper = helpers.embedMarkup || (depth0 != null ? depth0.embedMarkup : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"embedMarkup","hash":{},"data":data}) : helper)))
-    + "\" />\r\n                <a class=\"btn btn-sm btn-primary show-media\">Toggle "
-    + alias4(((helper = (helper = helpers.mediaType || (depth0 != null ? depth0.mediaType : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"mediaType","hash":{},"data":data}) : helper)))
-    + "</a>\r\n                <div class=\"embed-container\"></div>\r\n            </div>\r\n";
+  return "                <br />\r\n            <div class=\"embed-section\">\r\n                <input class=\"embed-src\" type=\"hidden\" data-src=\""
+    + container.escapeExpression(((helper = (helper = helpers.embedMarkup || (depth0 != null ? depth0.embedMarkup : depth0)) != null ? helper : helpers.helperMissing),(typeof helper === "function" ? helper.call(depth0 != null ? depth0 : {},{"name":"embedMarkup","hash":{},"data":data}) : helper)))
+    + "\" />                \r\n                <div class=\"embed-container\"></div>\r\n            </div>\r\n";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     var stack1, helper, alias1=depth0 != null ? depth0 : {}, alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
   return "﻿<div class=\"reddit-item row\">\r\n\r\n    <div class=\"col-sm-12 col-md-3 col-lg-2\">\r\n"
     + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.thumbnail : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    </div>\r\n\r\n    <div class=\"col-sm-12 col-md-9 col-lg-10\">\r\n            <span class=\"btn btn-warning btn-xs\" style=\"float:right;\">"
-    + alias4(((helper = (helper = helpers.subreddit || (depth0 != null ? depth0.subreddit : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"subreddit","hash":{},"data":data}) : helper)))
-    + "</span>\r\n            <h3 class=\"reddit-item-heading\">"
+    + "    </div>\r\n\r\n    <div class=\"col-sm-12 col-md-10 col-lg-10\">\r\n            \r\n            <h3 class=\"reddit-item-heading\">"
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "</h4>\r\n            <input type=\"hidden\" value=\""
     + alias4(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\" />\r\n\r\n            <div class=\"redit-item-content wordwrap\">"
+    + "\" />\r\n\r\n            <span class=\"btn btn-warning btn-xs\" style=\"margin-right:5px\">"
+    + alias4(((helper = (helper = helpers.subreddit || (depth0 != null ? depth0.subreddit : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"subreddit","hash":{},"data":data}) : helper)))
+    + "</span>\r\n            <a target=\"_blank\" class=\"btn btn-primary btn-xs\" href=\"http://www.reddit.com"
+    + alias4(((helper = (helper = helpers.permalink || (depth0 != null ? depth0.permalink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"permalink","hash":{},"data":data}) : helper)))
+    + "\" style=\"margin-right:5px\">View Comments "
+    + alias4(((helper = (helper = helpers.commentCount || (depth0 != null ? depth0.commentCount : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"commentCount","hash":{},"data":data}) : helper)))
+    + "</a>\r\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hasEmbed : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "            \r\n            <br /><br />\r\n            <div class=\"redit-item-content wordwrap\">"
     + alias4(((helper = (helper = helpers.content || (depth0 != null ? depth0.content : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"content","hash":{},"data":data}) : helper)))
-    + "</div>\r\n\r\n            <div class=\"redit-item-controls\">\r\n                <div class=\"redit-item-author\"><span>Submitted By: </span>"
+    + "</div>\r\n\r\n            <br />\r\n\r\n            <div class=\"redit-item-controls\">\r\n                <div class=\"redit-item-author\"><span>Submitted By: </span>"
     + alias4(((helper = (helper = helpers.author || (depth0 != null ? depth0.author : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"author","hash":{},"data":data}) : helper)))
     + "</div>\r\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.isLink : depth0),{"name":"if","hash":{},"fn":container.program(3, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "                <div class=\"reddit-item-comments\"><a target=\"_blank\" href=\"http://www.reddit.com"
-    + alias4(((helper = (helper = helpers.permalink || (depth0 != null ? depth0.permalink : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"permalink","hash":{},"data":data}) : helper)))
-    + "\">View Comments "
-    + alias4(((helper = (helper = helpers.commentCount || (depth0 != null ? depth0.commentCount : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"commentCount","hash":{},"data":data}) : helper)))
-    + "</a></div>\r\n            </div>\r\n\r\n"
-    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hasEmbed : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
-    + "    </div>\r\n\r\n</div>\r\n<hr />";
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.isLink : depth0),{"name":"if","hash":{},"fn":container.program(5, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "            </div>\r\n\r\n"
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hasEmbed : depth0),{"name":"if","hash":{},"fn":container.program(7, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + "         </div>\r\n\r\n\r\n    </div>\r\n<hr />";
 },"useData":true});
 templates['RedditTextScreen'] = template({"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
     return "﻿<div class=\"reddit-text-screen\">\r\n    <div class=\"row screen-items\"></div>\r\n    <div class=\"row screen-loader\">\r\n        <div class=\"col-xs-12 loader-checker\">x</div>\r\n        <div class=\"col-xs-12 loader-icon text-center\">\r\n            <img src=\"./Content/loading.gif\" class=\"img-circle\" />\r\n        </div>\r\n    </div>\r\n</div>";

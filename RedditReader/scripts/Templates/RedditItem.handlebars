@@ -6,29 +6,38 @@
         {{/if}}
     </div>
 
-    <div class="col-sm-12 col-md-9 col-lg-10">
-            <span class="btn btn-warning btn-xs" style="float:right;">{{subreddit}}</span>
+    <div class="col-sm-12 col-md-10 col-lg-10">
+            
             <h3 class="reddit-item-heading">{{title}}</h4>
             <input type="hidden" value="{{name}}" />
 
+            <span class="btn btn-warning btn-xs" style="margin-right:5px">{{subreddit}}</span>
+            <a target="_blank" class="btn btn-primary btn-xs" href="http://www.reddit.com{{permalink}}" style="margin-right:5px">View Comments {{commentCount}}</a>
+            {{#if hasEmbed}}
+            <a class="btn btn-xs btn-info show-media" style="margin-right:5px">Toggle {{mediaType}}</a>
+            {{/if}}
+            
+            <br /><br />
             <div class="redit-item-content wordwrap">{{content}}</div>
+
+            <br />
 
             <div class="redit-item-controls">
                 <div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
                 {{#if isLink}}
                 <div class="reddit-item-link"><a target="_blank" href="{{link}}">{{linkShort}}</a></div>
-                {{/if}}
-                <div class="reddit-item-comments"><a target="_blank" href="http://www.reddit.com{{permalink}}">View Comments {{commentCount}}</a></div>
+                {{/if}}                
             </div>
 
             {{#if hasEmbed}}
+                <br />
             <div class="embed-section">
-                <input class="embed-src" type="hidden" data-src="{{embedMarkup}}" />
-                <a class="btn btn-sm btn-primary show-media">Toggle {{mediaType}}</a>
+                <input class="embed-src" type="hidden" data-src="{{embedMarkup}}" />                
                 <div class="embed-container"></div>
             </div>
             {{/if}}
-    </div>
+         </div>
 
-</div>
+
+    </div>
 <hr />

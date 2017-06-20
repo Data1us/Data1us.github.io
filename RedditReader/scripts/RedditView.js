@@ -61,7 +61,7 @@
                 var markup = $(self.el.template(itemModel).replace(/\ufeff/, ''));
                 self.el.target.append(markup);
                 markup.find(".show-media").click(function (e) {                    
-                    var embedContainer = $(this).closest(".embed-section");
+                    var embedContainer = $(this).closest(".reddit-item");
                     var embedMarkup = embedContainer.find(".embed-src").attr("data-src");
                     var htmlLoc = embedContainer.find(".embed-container");
                     if (htmlLoc.html().length > 0) {                        
