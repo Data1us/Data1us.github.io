@@ -8,26 +8,20 @@
 
     <div class="col-sm-12 col-md-10 col-lg-10">
             
-            <h3 class="reddit-item-heading">{{title}}</h4>
+            <h3 class="reddit-item-heading"><a href="http://www.reddit.com{{permalink}}">{{title}}</a></h4>
             <input type="hidden" value="{{name}}" />
+                <span style="margin-right:5px">Submitted By: </span>{{author}}</span><br />    
 
             <span class="btn btn-warning btn-xs" style="margin-right:5px">{{subreddit}}</span>
             <a target="_blank" class="btn btn-primary btn-xs" href="http://www.reddit.com{{permalink}}" style="margin-right:5px">View Comments {{commentCount}}</a>
             {{#if hasEmbed}}
-            <a class="btn btn-xs btn-info show-media" style="margin-right:5px">Toggle {{mediaType}}</a>
+            <a class="btn btn-xs btn-success show-media" style="margin-right:5px">Toggle {{mediaType}}</a>
             {{/if}}
             
             <br /><br />
             <div class="redit-item-content wordwrap">{{content}}</div>
 
-            <br />
-
-            <div class="redit-item-controls">
-                <div class="redit-item-author"><span>Submitted By: </span>{{author}}</div>
-                {{#if isLink}}
-                <div class="reddit-item-link"><a target="_blank" href="{{link}}">{{linkShort}}</a></div>
-                {{/if}}                
-            </div>
+            <br />            
 
             {{#if hasEmbed}}
                 <br />

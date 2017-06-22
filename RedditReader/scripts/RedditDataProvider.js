@@ -5,6 +5,7 @@
         var self = this;    
         self.get = function (name, type, limit, after, callback) {                                  
             var rel = "http://www.reddit.com/r/" + name + "/" + type + "/.json?limit=" + limit;
+            if (name == "RedditFrontPage") rel = "http://www.reddit.com/.json?limit=" + limit;
             if (!_.isUndefined(after)) rel = rel + "&after=" + after;
             $.getJSON(rel + "&jsonp=?", function (json) {
                 callback(json);

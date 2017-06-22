@@ -71,3 +71,46 @@
 .sidebar ul li a.active {background-color:white;}
 .sidebar ul li { border-bottom: 0px solid white;}
 body {background-color:white;}
+
+html, body, #page-wrapper, 
+.the-search li, 
+.the-search li a,
+.sidebar ul li a.active,
+.sidebar ul li a,
+#loader,
+.reddit-item-heading,
+a, a.hover {
+    background-color: #333;
+    color: #c0c0c0 !important;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #444;
+    margin: 1em 0;
+    padding: 0;
+}
+
+#page-wrapper {
+border-left: 1px solid #444;
+}
+
+.btn-default, .btn-default.active {
+    color: #c0c0c0;
+    background-color: #222;
+    border-color: #444;
+}
+
+.btn-default.active {
+    color: #c0c0c0;
+    background-color: #444;
+    border-color: #444;
+}
+
+.sidebar-search input {
+    color: #222;
+    background-color: #d4d4d4;
+    border-color: #8c8c8c;
+}
