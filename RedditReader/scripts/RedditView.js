@@ -74,6 +74,22 @@
                         htmlLoc.html($('<div/>').html(embedMarkup).text());
                     }                    
                 });
+
+                markup.find(".show-comments").click(function (e) {
+                    var embedContainer = $(this).closest(".reddit-item");                    
+                    var htmlLoc = embedContainer.find(".comment-section");
+                    if (htmlLoc.html().length > 0) {                        
+                        htmlLoc.html("");                        
+                    }
+                    else {
+                        new page.RedditItemDataProvider("http://www.reddit.com" + itemModel.permalink)
+                            .get(function (daJson) {
+                                console.log(daJson);
+                                var view = new page.RedditItemView({ target: htmlLoc });
+                                view.render(daJson);
+                            });
+                    }
+                });
                               
             });
 

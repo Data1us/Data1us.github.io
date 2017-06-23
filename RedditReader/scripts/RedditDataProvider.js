@@ -13,4 +13,14 @@
         }       
     });
 
+    page.RedditItemDataProvider = (function (url) {
+        var self = this;
+        self.get = function (callback) {
+            var rel = url + ".json?jsonp=?";
+            $.getJSON(rel, function (json) {
+                callback(json);
+            });
+        }
+    });
+
 })(window, Handlebars);

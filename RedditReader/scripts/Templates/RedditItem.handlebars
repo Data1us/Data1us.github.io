@@ -8,30 +8,37 @@
 
     <div class="col-sm-12 col-md-10 col-lg-10">
             
-            <h3 class="reddit-item-heading"><a href="http://www.reddit.com{{permalink}}">{{title}}</a></h4>
+            <h3 class="reddit-item-heading"><a href="http://www.reddit.com{{permalink}}" target="_blank">{{title}}</a></h4>
             <input type="hidden" value="{{name}}" />
                 <span style="margin-right:5px">Submitted By: </span>{{author}}</span><br />    
 
             <span class="btn btn-warning btn-xs" style="margin-right:5px">{{subreddit}}</span>
-            <a target="_blank" class="btn btn-primary btn-xs" href="http://www.reddit.com{{permalink}}" style="margin-right:5px">View Comments {{commentCount}}</a>
+            <span class="btn btn-primary btn-xs show-comments" style="margin-right:5px">View Comments {{commentCount}}</span>
             {{#if hasEmbed}}
             <a class="btn btn-xs btn-success show-media" style="margin-right:5px">Toggle {{mediaType}}</a>
             {{/if}}
-            
             <br /><br />
-            <div class="redit-item-content wordwrap">{{content}}</div>
+                <div class="redit-item-content wordwrap">{{content}}</div>   
+         </div>
 
-            <br />            
 
+    <div class="col-sm-12"><br /><br /></div>
+
+
+        <div class="col-sm-12">
             {{#if hasEmbed}}
-                <br />
+            <br />
             <div class="embed-section">
-                <input class="embed-src" type="hidden" data-src="{{embedMarkup}}" />                
+                <input class="embed-src" type="hidden" data-src="{{embedMarkup}}" />
                 <div class="embed-container"></div>
             </div>
             {{/if}}
-         </div>
 
+        </div>
+
+        <div class="col-sm-12">
+            <div class="comment-section"></div>
+        </div>
 
     </div>
 <hr />
