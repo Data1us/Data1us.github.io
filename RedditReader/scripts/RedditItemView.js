@@ -68,7 +68,7 @@
                         str = str + '      </div>';
                         str = str + '    </div>';
                     }
-                    str = str + '  </div>  ';
+                    
                     str = str + '  </div>';
                     str = str + '</div>';                    
 
