@@ -116,3 +116,48 @@ border-left: 1px solid #444;
 }
 
 .comment-section li { padding:10px;}
+
+
+
+.panel-default>.panel-heading {
+        color: #c0c0c0 !important;
+        background-color: #333;
+        border:none;
+        padding:5px;
+}
+
+.panel-body {
+    padding:0px;    
+    background-color: #333;
+    border:none;
+    
+}
+
+.panel .panel-default {
+    padding-left:50px;
+}
+
+.panel-default {
+        color: #c0c0c0 !important;
+        background-color: #333;
+        border:none;
+}
+
+.panel-group .panel-heading+.panel-collapse>.list-group, .panel-group .panel-heading+.panel-collapse>.panel-body {
+     border-top: none;
+}
+
+.panel-title>.small, .panel-title>.small>a, .panel-title>a, .panel-title>small, .panel-title>small>a {
+    color: inherit;
+    font-size: .9em;
+}
+
+.panel-group {
+    margin-bottom: 0px;
+    border-bottom: none;
+}
+
+.comment-section.show {
+    max-height: 500px;
+    overflow: scroll;
+}

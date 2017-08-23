@@ -97,14 +97,17 @@
                     var embedContainer = $(this).closest(".reddit-item");                    
                     var htmlLoc = embedContainer.find(".comment-section");
                     if (htmlLoc.html().length > 0) {                        
-                        htmlLoc.html("");                        
+                        htmlLoc.html("");
+                        htmlLoc.removeClass("show");
                     }
                     else {
                         new page.RedditItemDataProvider("http://www.reddit.com" + itemModel.permalink)
                             .get(function (daJson) {
                                 console.log(daJson);
+                                htmlLoc.addClass("show");
                                 var view = new page.RedditItemView({ target: htmlLoc });
                                 view.render(daJson);
+
                             });
                     }
                 });

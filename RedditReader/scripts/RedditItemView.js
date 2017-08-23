@@ -34,19 +34,44 @@
             var item = data[0];
             var comments = data[1];
 
+            var itteration = 0;
             var drawComments = function (str, com) {
+                itteration = itteration+1;
                 if (com.kind == "Listing") {
                     _.each(com.data.children, function (child) {
-                        str = str + "<ul>"
+
+                        //str = str + "<ul>"
                         str = str + drawComments("", child);
-                        str = str + "</ul>"
+                        //str = str + "</ul>"
                     });
                 }
                 else if (com.kind == "t1") {
-                    str = str + "<li>" + com.data.body + "</li>"
+
+                    str = str + '<div class="panel-group" id="accordion'+itteration+'" role="tablist" aria-multiselectable="true">';
+                    str = str + '  <div class="panel panel-default">';
+                    str = str + '    <div class="panel-heading" role="tab" id="heading'+itteration+'">';
+                    str = str + '      <span class="panel-title">';
+                    str = str + '        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse' + itteration + '" aria-expanded="true" aria-controls="collapse' + itteration + '">';
+                    //str = str + '<div class="col-sm-10">' + com.data.body + '</div><div class="col-sm-2">'+(!_.isUndefined(data.replies) ? com.data.replies.data.children.length : "")+'</div>';
+                    str = str + com.data.body
+                    str = str + '        </a>';
+                    str = str + '      </span>';
+                    str = str + '    </div>';
                     if (com.data.replies !== "") {
+                        str = str + '    <div id="collapse' + itteration + '" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading' + itteration + '">';
+                        str = str + '      <div class="panel-body">';
+
+
                         str = str + drawComments("", com.data.replies);
+
+
+                        str = str + '      </div>';
+                        str = str + '    </div>';
                     }
+                    str = str + '  </div>  ';
+                    str = str + '  </div>';
+                    str = str + '</div>';                    
+
                 }
                 return str;
             };
