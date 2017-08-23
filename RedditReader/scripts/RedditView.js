@@ -57,6 +57,24 @@
                     itemModel.embedMarkup = $('<div/>').text('<img src="' + item.data.url + '" style="max-width:80%; max-height:600px;"/>').html();
                 }
 
+                if (!_.isUndefined(item.data.url) && item.data.url.endsWith(".gifv")) {
+                    itemModel.hasEmbed = true;
+                    itemModel.mediaType = item.data.url;
+                    itemModel.embedMarkup = $('<div/>').text('<img src="' + item.data.url.replace(".gifv", ".gif") + '" style="max-width:80%; max-height:600px;"/>').html();
+                }
+
+                if (!itemModel.hasEmbed && !_.isUndefined(item.data.url) && item.data.url.indexOf("imgur.com") &&
+                    typeof (item.data.preview) != "undefined" && !_.isUndefined(item.data.preview.images) && item.data.preview.images.length > 0) {
+                
+                    if (!_.isUndefined(item.data.preview.images[0].source)) {
+                        itemModel.hasEmbed = true;                        
+                        itemModel.mediaType = item.data.url;
+                        itemModel.embedMarkup = $('<div/>').text('<img src="' + item.data.preview.images[0].source.url + '" style="max-width:80%; max-height:600px;"/>').html();
+                    }
+                    
+
+                }
+
                 
                 var markup = $(self.el.template(itemModel).replace(/\ufeff/, ''));
                 self.el.target.append(markup);

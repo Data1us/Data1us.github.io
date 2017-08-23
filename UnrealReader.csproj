@@ -102,6 +102,7 @@
     <None Include="RedditReader\scripts\Templates\ImgurEmbedView.handlebars" />
     <None Include="RedditReader\scripts\Templates\LeftMenuItemNew.handlebars" />
     <None Include="RedditReader\scripts\Templates\LeftMenuItem.handlebars" />
+    <None Include="RedditReader\scripts\Templates\RedditFullItem.handlebars" />
     <None Include="RedditReader\scripts\Templates\RedditImage.handlebars" />
     <None Include="RedditReader\scripts\Templates\ImgurScreen.handlebars" />
     <None Include="RedditReader\scripts\Templates\ImgurItem.handlebars" />
@@ -150,6 +151,7 @@
     <Content Include="RedditReader\Content\nsfw.png" />
     <Content Include="RedditReader\favicon.ico" />
     <Content Include="RedditReader\index.html" />
+    <Content Include="RedditReader\RedditFull.html" />
     <Content Include="RedditReader\scripts\blueimp-gallery.js" />
     <Content Include="RedditReader\scripts\bootbox.min.js" />
     <Content Include="RedditReader\scripts\bootstrap.js" />
@@ -164,6 +166,7 @@
     <Content Include="RedditReader\scripts\me.jpg" />
     <Content Include="RedditReader\scripts\metisMenu.min.js" />
     <Content Include="RedditReader\scripts\ImgurScreen.js" />
+    <Content Include="RedditReader\scripts\RedditItemView.js" />
     <Content Include="RedditReader\scripts\SearchView.js" />
     <Content Include="RedditReader\scripts\RedditImageView.js" />
     <Content Include="RedditReader\scripts\RedditDataProvider.js" />
